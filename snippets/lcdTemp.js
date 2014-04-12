@@ -6,30 +6,47 @@ var scaleValue = function(v, vMax) {
     return v * vMax;
 };
 
+var acquireData = function() {
+  var lightRaw = analogRead(A1);
+
+  return {
+    light: scaleValue(1 - lightRaw, 40),
+    temp:  sensor.getTemp()
+  };
+};
+
+var drawText = function(data) {
+  var msg = '';
+
+  msg = "Light: " + data.light;
+  g.drawString(msg, 0, 20);
+
+  msg = "Temp: " + data.temp;
+  g.drawString(msg, 0, 30);
+};
+
+var drawLine = function(data) {
+  g.drawLine(0, data.light, 80, data.light);
+};
+
+
+var displayData = function(data) {
+  g.clear();
+
+  drawText(data);
+
+  drawLine(data);
+
+  g.flip();
+};
+
 var tick = function() {
-    console.log("tick()");
+  console.log("tick()");
+  var data = acquireData();
 
-    var light = analogRead(A1);
-    var val = scaleValue(1 - light, 40);
-    var temp = sensor.getTemp();
+  console.log(JSON.stringify(data, null, 4));
 
-    g.clear();
-
-    console.log(JSON.stringify({
-        light: val,
-        temp: temp
-    }, null, 4));
-
-
-    msg = "Light: " + val;
-    g.drawString(msg, 0, 20);
-
-    msg = "Temp: " + temp;
-    g.drawString(msg, 0, 30);
-
-    g.drawLine(0, val, 80, val);
-
-    g.flip();
+  displayData(data);
 };
 
 var initLcd = function() {
