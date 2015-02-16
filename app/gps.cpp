@@ -1,4 +1,5 @@
 #include "gps.h"
+#include "general.h"
 
 #include <stdio.h>
 
@@ -8,7 +9,7 @@
 Adafruit_GPS GPS(&Serial1);
 
 extern int getFreeRam(void);
-extern unsigned int last_delta;
+extern unsigned long last_delta;
 
 // this keeps track of whether we're using the interrupt
 // off by default!
@@ -51,26 +52,22 @@ void setupGps() {
   Serial.println(PMTK_Q_RELEASE);
 }
 
+extern unsigned short bootNo;
+
 void updateDisplay() {
   tft.setCursor(0, 0);
   // tft.fillScreen(ILI9340_BLACK);
   tft.setTextColor(ILI9340_GREEN, ILI9340_BLACK);
   tft.setTextSize(2);
   
-  tft.print("\nTime: ");
-  tft.print(GPS.hour, DEC); 
-  tft.print(':');
-  tft.print(GPS.minute, DEC); 
-  tft.print(':');
-  tft.print(GPS.seconds, DEC); 
-  tft.print('.');
-  tft.println(GPS.milliseconds);
-  tft.print("Date: ");
-  tft.print(GPS.day, DEC); 
-  tft.print('/');
-  tft.print(GPS.month, DEC); 
-  tft.print("/20");
-  tft.println(GPS.year, DEC);
+  char buff[128];
+  
+  sprintf(buff, "Date: 20%02d/%02d/%02d", GPS.year, GPS.month, GPS.day);
+  tft.println(buff);
+  
+  sprintf(buff, "Time: %02d:%02d:%02d.%02d", GPS.hour, GPS.minute, GPS.seconds, GPS.milliseconds);
+  tft.println(buff);
+  
   // Serial.print("Fix: "); 
   // Serial.print((int)GPS.fix);
   // Serial.print(" quality: "); 
@@ -90,10 +87,12 @@ void updateDisplay() {
     Serial.print("Angle: "); 
     Serial.println(GPS.angle);
     tft.print("Alt: "); 
-    tft.println(GPS.altitude);
+    tft.println(GPS.altitude, 2);
     Serial.print("Satellites: "); 
     Serial.println((int)GPS.satellites);
   }  
+  
+  tft.println();
 
   tft.print("Uptime: ");
   tft.println(millis() * 0.001, 2);
@@ -101,29 +100,27 @@ void updateDisplay() {
   unsigned int mem_free = getFreeRam();
   unsigned int mem_total = getTotalRam();
   
-  tft.print("RAM: ");
-  tft.print(mem_free, DEC);
-  tft.print("/");
-  tft.print(mem_total, DEC);
-  tft.print(" (");
-  tft.print(mem_free / (float) mem_total * 100, 2);
-  tft.print("%)");
-  tft.println();
+  sprintf(buff, "RAM: %d/%d (%.1f%%)", mem_free, mem_total, ((float)mem_free / (float)mem_total) * 100.0f);
+  tft.println(buff);
   
   //*
   float last_delta_s = last_delta * 0.001f;
   
-  tft.print("Tick: ");
-  tft.print(last_delta_s, 3);
-  tft.print(" / ");
-  tft.print("FPS: ");
-  tft.print(1 / (last_delta_s), 2);
-  tft.println();  
+  sprintf(buff, "Tick: %0.3f, FPS: %0.2f",last_delta_s, 1 / last_delta_s);
+  tft.println(buff);
   //*/
+    
+  sprintf(buff, "Version: %d.%d.%d, BootNo: %d", bootNo);
+  tft.println(buff);
+  
+  tft.setTextColor(ILI9340_RED, ILI9340_BLACK);
+  tft.setTextSize(3);
+  tft.println("\nMarianka");
 }
 
 uint32_t timer = millis();
 void loopGps() {
+  //*
   // in case you are not using the interrupt above, you'll
   // need to 'hand query' the GPS, not suggested :(
   if (! usingInterrupt) {
@@ -133,12 +130,13 @@ void loopGps() {
       c = GPS.read();
 
       // if you want to debug, this is a good time to do it!
-      if (GPSECHO) {
-        if (c) Serial.print(c);
+      if (GPSECHO && c) {
+        Serial.print(c);
       }
     } 
     while(c);
   }
+  //*/
 
   // if a sentence is received, we can check the checksum, parse it...
   if (GPS.newNMEAreceived()) {

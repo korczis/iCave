@@ -4,11 +4,11 @@
   #include <SD.h>
   
   // set up variables using the SD utility library functions:
-  Sd2Card card;
-  SdVolume volume;
-  SdFile root;
+  extern Sd2Card card;
+  extern SdVolume volume;
+  extern SdFile root;
   
-  boolean sdInited = false;
+  extern boolean sdInited;
   
   // change this to match your SD shield or module;
   // Arduino Ethernet shield: pin 4
@@ -17,5 +17,7 @@
   // Teensy 2.0: pin 0
   // Teensy++ 2.0: pin 20
   const int chipSelect = 10;   
+  
+  boolean setupSdCard();
 #endif // ICAVE_GPS_H
 

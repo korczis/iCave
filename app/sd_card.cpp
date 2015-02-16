@@ -1,5 +1,11 @@
 #include "sd_card.h"
 
+Sd2Card card;
+SdVolume volume;
+SdFile root;
+  
+boolean sdInited = false;
+
 boolean setupSdCard() {
   if(Serial) {
     Serial.println("Setting up SD Card ...");
