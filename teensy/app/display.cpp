@@ -1,6 +1,6 @@
 #include "display.h"
 
-extern TFT_ILI9340 tft;
+TFT_ILI9340 tft = TFT_ILI9340(_cs, _dc, _rst);
 
 unsigned long testFillScreen() {
   unsigned long start = micros();
@@ -296,5 +296,17 @@ void testDisplay() {
   delay(500);
 
   Serial.println(F("Done!"));
+}
+
+void setupDisplay() {
+  tft.begin();
+  
+  #if defined(__MK20DX128__) || defined(__MK20DX256__)
+    //want try the fastest?
+    tft.setBitrate(24000000);
+  #endif
+
+  tft.fillScreen(ILI9340_BLACK);
+  tft.setRotation(1);
 }
 
