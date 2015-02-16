@@ -60,7 +60,7 @@ void setup() {
   #endif // ENABLE_GPS
   
   #if ENABLE_WIFI
-    // setupWifi();
+    setupWifi();
   #endif // WIFI_ENABLED
 
   #if ENABLE_DISPLAY

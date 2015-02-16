@@ -1,5 +1,3 @@
-#if ENABLE_WIFI
-
 #include "wifi.h"
 
 // Use hardware SPI for the remaining pins
@@ -17,6 +15,4 @@ void setupWifi() {
     Serial.println(F("CC3000 initialized!"));
   }
 }
-
-#endif // ENABLE_WIFI
 
