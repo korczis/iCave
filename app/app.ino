@@ -1,13 +1,16 @@
-#define ENABLE_WIFI (1)
+// Core includes
+#include "SPI.h"
+#include <Wire.h>
+#include <wiring.h>
+
+// App configuration related defines
+#define ENABLE_WIFI (0)
 #define ENABLE_DISPLAY (1)
 #define ENABLE_GPS (1)
 #define ENABLE_SD_CARD (0)
 #define ENABLE_TSL_2561 (1)
 
-#include "SPI.h"
-#include <Wire.h>
-#include <wiring.h>
-
+// Global App specific includes
 #include "general.h"
 #include "serial.h"
 
@@ -44,13 +47,38 @@
   #include "TSL2561.h"
 #endif // ENABLE_TSL_2561
 
+void printInfo() {
+  if(Serial) {
+    Serial.print("ENABLE_WIFI = ");
+    Serial.println(ENABLE_WIFI);
+    
+    Serial.print("ENABLE_DISPLAY = ");
+    Serial.println(ENABLE_DISPLAY);
+    
+    Serial.print("ENABLE_GPS = ");
+    Serial.println(ENABLE_GPS);
+    
+    Serial.print("ENABLE_SD_CARD = ");
+    Serial.println(ENABLE_SD_CARD);
+    
+    Serial.print("ENABLE_TSL_2561 = ");
+    Serial.println(ENABLE_TSL_2561);
+  }
+}
+
+/**
+ * @brief Main setup
+ */ 
 void setup() {
   // First setup serial port for communicating with PC
-  setupSerial();
+  setupSerial(true);
 
   // Print banner
   Serial.println("iCave 0.0.1"); 
 
+  // Print info about enabled components
+  printInfo();
+  
   #if ENABLE_SD_CARD
     sdInited = setupSdCard();
   #endif // ENABLE_SD_CARD
@@ -68,6 +96,9 @@ void setup() {
   #endif // ENABLE_DISPLAY
 }
 
+/**
+ * @brief Main loop
+ */
 void loop(void) {
   #if ENABLE_GPS
     loopGps();

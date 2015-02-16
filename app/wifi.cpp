@@ -5,7 +5,10 @@
 Adafruit_CC3000 cc3000 = Adafruit_CC3000(ADAFRUIT_CC3000_CS, ADAFRUIT_CC3000_IRQ,  ADAFRUIT_CC3000_VBAT, SPI_CLOCK_DIVIDER);
 
 void setupWifi() {
-  Serial.println(F("Initializing CC3000 ..."));
+  if(Serial) {
+    Serial.println("Setting up CC3000 ...");
+  }
+  
   if (!cc3000.begin(false))
   {
     Serial.println(F("Unable to initialise the CC3000! Check your wiring?"));

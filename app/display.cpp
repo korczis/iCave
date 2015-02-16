@@ -299,6 +299,10 @@ void testDisplay() {
 }
 
 void setupDisplay() {
+  if(Serial) {
+    Serial.println("Setting up display ...");
+  }
+  
   tft.begin();
   
   #if defined(__MK20DX128__) || defined(__MK20DX256__)
