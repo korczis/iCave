@@ -4,4 +4,6 @@
     #undef __FlashStringHelper::F(string_literal)
     #define F(string_literal) string_literal
   #endif
+  
+  unsigned int getTotalRam();
 #endif // ICAVE_GENERAL_H

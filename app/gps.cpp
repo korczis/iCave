@@ -1,10 +1,14 @@
 #include "gps.h"
 
+#include <stdio.h>
+
+#include "general.h"
 #include "display.h"
 
 Adafruit_GPS GPS(&Serial1);
 
 extern int getFreeRam(void);
+extern unsigned int last_delta;
 
 // this keeps track of whether we're using the interrupt
 // off by default!
@@ -49,12 +53,10 @@ void setupGps() {
 
 void updateDisplay() {
   tft.setCursor(0, 0);
-  //tft.fillScreen(ILI9340_BLACK);
-  // tft.clearScreen(ILI9340_BLACK);
+  // tft.fillScreen(ILI9340_BLACK);
   tft.setTextColor(ILI9340_GREEN, ILI9340_BLACK);
   tft.setTextSize(2);
-  // tft.println("Groop");
-
+  
   tft.print("\nTime: ");
   tft.print(GPS.hour, DEC); 
   tft.print(':');
@@ -73,7 +75,8 @@ void updateDisplay() {
   // Serial.print((int)GPS.fix);
   // Serial.print(" quality: "); 
   Serial.println((int)GPS.fixquality); 
-  if (GPS.fix) {
+  
+  if (true || GPS.fix) {
     tft.print("Loc: ");
     tft.print(GPS.latitude * 0.01, 2); 
     //tft.print(GPS.lat);
@@ -92,11 +95,31 @@ void updateDisplay() {
     Serial.println((int)GPS.satellites);
   }  
 
-  tft.print("ms: ");
-  tft.println(millis());
+  tft.print("Uptime: ");
+  tft.println(millis() * 0.001, 2);
 
-  tft.print("Free RAM: ");
-  tft.println(getFreeRam(), DEC);
+  unsigned int mem_free = getFreeRam();
+  unsigned int mem_total = getTotalRam();
+  
+  tft.print("RAM: ");
+  tft.print(mem_free, DEC);
+  tft.print("/");
+  tft.print(mem_total, DEC);
+  tft.print(" (");
+  tft.print(mem_free / (float) mem_total * 100, 2);
+  tft.print("%)");
+  tft.println();
+  
+  //*
+  float last_delta_s = last_delta * 0.001f;
+  
+  tft.print("Tick: ");
+  tft.print(last_delta_s, 3);
+  tft.print(" / ");
+  tft.print("FPS: ");
+  tft.print(1 / (last_delta_s), 2);
+  tft.println();  
+  //*/
 }
 
 uint32_t timer = millis();

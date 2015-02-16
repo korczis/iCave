@@ -3,9 +3,18 @@
 #include <Wire.h>
 #include <wiring.h>
 
+// Global configuration
+#define LOOP_INTERVAL (50)
+
 // App configuration related defines
+#define SERIAL (1)
+#define SERIAL_WAIT (0)
+
 #define ENABLE_WIFI (0)
+
 #define ENABLE_DISPLAY (1)
+#define ENABLE_DISPLAY_TEST_LOOP (0)
+
 #define ENABLE_GPS (1)
 #define ENABLE_SD_CARD (0)
 #define ENABLE_TSL_2561 (1)
@@ -71,7 +80,7 @@ void printInfo() {
  */ 
 void setup() {
   // First setup serial port for communicating with PC
-  setupSerial(true);
+  setupSerial(SERIAL_WAIT);
 
   // Print banner
   Serial.println("iCave 0.0.1"); 
@@ -96,23 +105,33 @@ void setup() {
   #endif // ENABLE_DISPLAY
 }
 
+unsigned int last_delta = 0;
+
 /**
  * @brief Main loop
  */
 void loop(void) {
+  unsigned int tick_start = millis();
+  
   #if ENABLE_GPS
     loopGps();
   #endif // ENABLE_GPS
   
-  #if ENABLE_DISPLAY
-    /*
-    for(uint8_t rotation=0; rotation<4; rotation++) {
+  #if ENABLE_DISPLAY && ENABLE_DISPLAY_TEST_LOOP
+    for(uint8_t rotation = 0; rotation < 4; rotation++) {
       tft.setRotation(rotation);
       testDisplay();
       delay(2000);
-    }
-    //*/
+    }    
   #endif // ENABLE_DISPLAY
+  
+  // Sleep for some time, if needed
+  delay(LOOP_INTERVAL);
+  
+  // Leak test
+  // char* data = new char(64);
+  
+  last_delta = millis() - tick_start;
 }
 
 
