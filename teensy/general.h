@@ -1,4 +1,0 @@
-#ifndef ICAVE_GENERAL_H
-#define ICAVE_GENERAL_H
-
-#endif // ICAVE_GENERAL_H

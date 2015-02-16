@@ -40,6 +40,10 @@
   #include "sd_card.h"
 #endif // ENABLE_SD_CARD
 
+#if ENABLE_TSL_2561
+  #include "TSL2561.h"
+#endif // ENABLE_TSL_2561
+
 void setup() {
   // First setup serial port for communicating with PC
   setupSerial();
