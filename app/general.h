@@ -7,7 +7,7 @@
  
   #define ICAVE_VERSION_MAJOR (0)
   #define ICAVE_VERSION_MINOR (0)
-  #define ICAVE_VERSION_PATCH (0)
+  #define ICAVE_VERSION_PATCH (1)
 
   unsigned int getTotalRam();
   

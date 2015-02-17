@@ -1,5 +1,9 @@
 #include "gps.h"
 #include "general.h"
+#include "eeprom.h"
+
+#include <avr/io.h>
+#include <avr/interrupt.h>
 
 #include <stdio.h>
 
@@ -75,10 +79,10 @@ void updateDisplay() {
   
   if (true || GPS.fix) {
     tft.print("Loc: ");
-    tft.print(GPS.latitude * 0.01, 2); 
+    tft.print(GPS.latitude * 0.01, 4); 
     //tft.print(GPS.lat);
     tft.print(", "); 
-    tft.print(GPS.longitude * 0.01, 2); 
+    tft.print(GPS.longitude * 0.01, 4); 
     //tft.println(GPS.lon);
     tft.println();
 
@@ -94,8 +98,16 @@ void updateDisplay() {
   
   tft.println();
 
+  sprintf(buff, "Temperature: %.2f", dhtTemperature);
+  tft.println(buff);
+  
+  sprintf(buff, "Humidity: %.2f%%", dhtHumidity);
+  tft.println(buff);
+  
+  tft.println();
+
   tft.print("Uptime: ");
-  tft.println(millis() * 0.001, 2);
+  tft.println(millis() * 0.001, 4);
 
   unsigned int mem_free = getFreeRam();
   unsigned int mem_total = getTotalRam();
@@ -106,16 +118,16 @@ void updateDisplay() {
   //*
   float last_delta_s = last_delta * 0.001f;
   
-  sprintf(buff, "Tick: %0.3f, FPS: %0.2f",last_delta_s, 1 / last_delta_s);
+  sprintf(buff, "Tick: %0.4f, FPS: %0.2f",last_delta_s, 1 / last_delta_s);
   tft.println(buff);
   //*/
     
-  sprintf(buff, "Version: %d.%d.%d, BootNo: %d", bootNo);
+  sprintf(buff, "Ver: %d.%d.%d, Run: #%d", getVersionMajor(), getVersionMinor(), getVersionPatch(), persistenceInfo.bootNo);
   tft.println(buff);
   
-  tft.setTextColor(ILI9340_RED, ILI9340_BLACK);
-  tft.setTextSize(3);
-  tft.println("\nMarianka");
+  // tft.setTextColor(ILI9340_RED, ILI9340_BLACK);
+  // tft.setTextSize(3);
+  // tft.println("\nMarianka");
 }
 
 uint32_t timer = millis();
@@ -150,9 +162,10 @@ void loopGps() {
   }
 
   // if millis() or timer wraps around, we'll just reset it
-  if (timer > millis())  
+  if (timer > millis()) { 
     timer = millis();
-
+  }
+  
   // approximately every 2 seconds or so, print out the current stats
   int ms = millis();
   if (ms - timer > 1000) { 
