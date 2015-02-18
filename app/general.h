@@ -22,8 +22,7 @@
   // Global configuration
   #define LOOP_TYPE (LT_FIXED_FPS)
   #define LOOP_INTERVAL (16)
-  #define LOOP_FPS (5.0f)
-
+  #define LOOP_FPS (1.0f)
 
   unsigned int getTotalRam();
   

@@ -176,7 +176,7 @@ void loop(void) {
 
   if(LOOP_TYPE == LT_FIXED_FPS) {
     static const int LOOP_SLEEP_TIME = ((1.0f / LOOP_FPS) * 1000);
-    const int tick_loop = millis() - tick_start;
+    const int tick_loop = millis() - tick_start; // TODO: Review this
     const int sleep_time = (LOOP_SLEEP_TIME - tick_loop);
 
     char buffer[128];
