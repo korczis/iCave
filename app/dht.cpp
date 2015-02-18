@@ -1,6 +1,7 @@
 #include "dht.h"
 
-DHT dht(DHTPIN, DHTTYPE, 25);
+
+DHT dht(DHTPIN, DHTTYPE, 20);
 
 float dhtHumidity = 0;
 float dhtTemperature = 0;
@@ -14,10 +15,10 @@ void loopDht() {
   // Reading temperature or humidity takes about 250 milliseconds!
   
   // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
-  float dhtHumidity = dht.readHumidity();
+  dhtHumidity = dht.readHumidity();
   
   // Read temperature as Celsius
-  float dhtTemperature = dht.readTemperature();
+  dhtTemperature = dht.readTemperature();
   
   // Read temperature as Fahrenheit
   float f = dht.readTemperature(true);
@@ -31,5 +32,5 @@ void loopDht() {
     dhtTemperature = 0;
   }
   
-  float dhtHeatIndex = dht.computeHeatIndex(f, dhtHumidity);
+  dhtHeatIndex = (dht.computeHeatIndex(f, dhtHumidity) - 32) * (5.0f / 9.0f);
 }

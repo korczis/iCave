@@ -1,6 +1,7 @@
 #include "gps.h"
 #include "general.h"
 #include "eeprom.h"
+#include "./dht.h"
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -77,37 +78,40 @@ void updateDisplay() {
   // Serial.print(" quality: "); 
   Serial.println((int)GPS.fixquality); 
   
-  if (true || GPS.fix) {
-    tft.print("Loc: ");
-    tft.print(GPS.latitude * 0.01, 4); 
-    //tft.print(GPS.lat);
-    tft.print(", "); 
-    tft.print(GPS.longitude * 0.01, 4); 
-    //tft.println(GPS.lon);
-    tft.println();
-
-    tft.print("Speed: "); 
-    tft.println(GPS.speed);
-    Serial.print("Angle: "); 
-    Serial.println(GPS.angle);
-    tft.print("Alt: "); 
-    tft.println(GPS.altitude, 2);
-    Serial.print("Satellites: "); 
-    Serial.println((int)GPS.satellites);
-  }  
+  sprintf(buff, "Loc: %.4f %.4f", GPS.latitude * 0.01, 4, GPS.longitude * 0.01, 4);
+  tft.println(buff);
   
-  tft.println();
+  sprintf(buff, "Speed: %.2f", GPS.speed);
+  tft.println(buff);
+  
+  sprintf(buff, "Angle: %.2f", GPS.angle);
+  tft.println(buff);
+  
+  sprintf(buff, "Altitude: %.2f", GPS.altitude);
+  tft.println(buff);
 
-  sprintf(buff, "Temperature: %.2f", dhtTemperature);
+  sprintf(buff, "Fix: %d, Sats: %d", GPS.fix, GPS.satellites);
+  tft.println(buff);  
+  
+  // tft.println();
+
+  sprintf(buff, "Temperature: %.2f C", dhtTemperature);
   tft.println(buff);
   
   sprintf(buff, "Humidity: %.2f%%", dhtHumidity);
   tft.println(buff);
   
-  tft.println();
+  sprintf(buff, "Heat Index: %.2f C", dhtHeatIndex);
+  tft.println(buff);
+  
+  // tft.println();
 
-  tft.print("Uptime: ");
-  tft.println(millis() * 0.001, 4);
+  unsigned int raw_secs = millis() * 0.001f;
+  const int rt_secs = raw_secs % 60; 
+  const int rt_mins = raw_secs / 60;
+
+  sprintf(buff, "Uptime: %02d:%02d", rt_mins, rt_secs);
+  tft.println(buff);
 
   unsigned int mem_free = getFreeRam();
   unsigned int mem_total = getTotalRam();
@@ -168,7 +172,7 @@ void loopGps() {
   
   // approximately every 2 seconds or so, print out the current stats
   int ms = millis();
-  if (ms - timer > 1000) { 
+  if (ms - timer > LOOP_FPS_CONST) { 
     timer = ms; // reset the timer
 
     updateDisplay();

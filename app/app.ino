@@ -4,24 +4,12 @@
 #include <wiring.h>
 #include <EEPROM.h>  
 
-typedef enum E_LOOP_TYPE {
-  LT_UNKNOWN = -1,
-  LT_FIXED_SLEEP,
-  LT_FIXED_FPS,
-
-  // Last marker
-  LT_LAST
-} 
-E_LOOP_TYPE;
-
-// Global configuration
-#define LOOP_TYPE (LT_FIXED_FPS)
-#define LOOP_INTERVAL (16)
-#define LOOP_FPS (3.4567f)
+// Global iCave App specific includes
+#include "general.h"
 
 // App configuration related defines
 #define SERIAL (1)
-#define SERIAL_WAIT (0)
+#define SERIAL_WAIT (0) // Wait for Arduino IDE "Serial Monitor to get connected"
 
 #define ENABLE_WIFI (0)
 
@@ -34,8 +22,7 @@ E_LOOP_TYPE;
 #define ENABLE_SNOOZE (0)
 #define ENABLE_DHT (1)
 
-// Global App specific includes
-#include "general.h"
+// Modules
 #include "serial.h"
 #include "eeprom.h"
 
@@ -166,18 +153,22 @@ unsigned long last_delta = 0;
 void loop(void) {
   const int tick_start = millis();
 
-#if ENABLE_GPS
-  loopGps();
-#endif // ENABLE_GPS
+  #if ENABLE_GPS
+    loopGps();
+  #endif // ENABLE_GPS
+  
+  #if ENABLE_DISPLAY && ENABLE_DISPLAY_TEST_LOOP
+    for(uint8_t rotation = 0; rotation < 4; rotation++) {
+      tft.setRotation(rotation);
+      testDisplay();
+      delay(2000);
+    }    
+  #endif // ENABLE_DISPLAY
 
-#if ENABLE_DISPLAY && ENABLE_DISPLAY_TEST_LOOP
-  for(uint8_t rotation = 0; rotation < 4; rotation++) {
-    tft.setRotation(rotation);
-    testDisplay();
-    delay(2000);
-  }    
-#endif // ENABLE_DISPLAY
-
+  #if ENABLE_DHT
+    loopDht();
+  #endif // ENABLE_DHT
+  
   if(LOOP_TYPE == LT_FIXED_SLEEP) {
     // Sleep for some time, if needed
     delay(LOOP_INTERVAL);
@@ -188,24 +179,19 @@ void loop(void) {
     const int tick_loop = millis() - tick_start;
     const int sleep_time = (LOOP_SLEEP_TIME - tick_loop);
 
-    Serial.println(sleep_time);
+    char buffer[128];
+    sprintf(buffer, "loop() - sleep_time == %d", sleep_time);
+    Serial.println(buffer);
 
     delay(sleep_time >= 0 ? sleep_time : 1);
   } // LT_FIXED_FPS
 
-  // Leak test
-  // char* data = new char(64);
+  #if ENABLE_SNOOZE
+    LP.Sleep();
+  #endif // ENABLE_SNOOZE
 
+  // Measure tick time
   last_delta = millis() - tick_start;
-
-#if ENABLE_SNOOZE
-  LP.Sleep();
-#endif // ENABLE_SNOOZE
-
-
-#if ENABLE_DHT
-  loopDht();
-#endif // ENABLE_DHT
 }
 
 

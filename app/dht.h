@@ -11,6 +11,10 @@
   
   extern DHT dht;
   
+  extern float dhtHumidity;
+  extern float dhtTemperature;
+  extern float dhtHeatIndex;
+
   void setupDht();
   
   void loopDht();
