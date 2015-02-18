@@ -29,15 +29,15 @@ void setupGps() {
   }
   
   // 9600 NMEA is the default baud rate for Adafruit MTK GPS's- some use 4800
-  GPS.begin(4);
+  GPS.begin(GPS_BAUDRATE);
 
   // uncomment this line to turn on RMC (recommended minimum) and GGA (fix data) including altitude
-  // GPS.sendCommand(PMTK_SET_NMEA_OUTPUT_RMCGGA);
+  GPS.sendCommand(PMTK_SET_NMEA_OUTPUT_RMCGGA);
   // uncomment this line to turn on only the "minimum recommended" data
   // GPS.sendCommand(PMTK_SET_NMEA_OUTPUT_RMCONLY);
   // For parsing data, we don't suggest using anything but either RMC only or RMC+GGA since
   // the parser doesn't care about other sentences at this time
-  GPS.sendCommand(PMTK_SET_NMEA_OUTPUT_ALLDATA);
+  // GPS.sendCommand(PMTK_SET_NMEA_OUTPUT_ALLDATA);
 
   // Set the update rate
   GPS.sendCommand(PMTK_SET_NMEA_UPDATE_1HZ);   // 1 Hz update rate
@@ -76,7 +76,7 @@ void updateDisplay() {
   // Serial.print("Fix: "); 
   // Serial.print((int)GPS.fix);
   // Serial.print(" quality: "); 
-  Serial.println((int)GPS.fixquality); 
+  // Serial.println((int)GPS.fixquality); 
   
   sprintf(buff, "Loc: %.4f %.4f", GPS.latitude * 0.01, 4, GPS.longitude * 0.01, 4);
   tft.println(buff);
@@ -95,39 +95,52 @@ void updateDisplay() {
   
   // tft.println();
 
-  sprintf(buff, "Temperature: %.2f C", dhtTemperature);
-  tft.println(buff);
-  
-  sprintf(buff, "Humidity: %.2f%%", dhtHumidity);
-  tft.println(buff);
-  
-  sprintf(buff, "Heat Index: %.2f C", dhtHeatIndex);
-  tft.println(buff);
-  
-  // tft.println();
+  #if ENABLE_DHT
+    sprintf(buff, "Temperature: %.2f C", dhtTemperature);
+    tft.println(buff);
+    
+    sprintf(buff, "Humidity: %.2f%%", dhtHumidity);
+    tft.println(buff);
+    
+    sprintf(buff, "Heat Index: %.2f C", dhtHeatIndex);
+    tft.println(buff);
+    
+    // tft.println();
+  #endif // ENABLE_DHT
 
   unsigned int raw_secs = millis() * 0.001f;
-  const int rt_secs = raw_secs % 60; 
-  const int rt_mins = raw_secs / 60;
+  
+  const unsigned int rt_days = raw_secs / 86400;
+  raw_secs %= 86400;
+  
+  const unsigned int rt_hours = raw_secs / 3600;
+  raw_secs %= 3600;
+  
+  const unsigned int rt_mins = raw_secs / 60;
+  raw_secs %= 60; 
+  
+  const unsigned int rt_secs = raw_secs;
 
-  sprintf(buff, "Uptime: %02d:%02d", rt_mins, rt_secs);
-  tft.println(buff);
-
-  unsigned int mem_free = getFreeRam();
-  unsigned int mem_total = getTotalRam();
+  #if DISPLAY_STATS
+    sprintf(buff, "Uptime: %02dd %02d:%02d:%02d", rt_days, rt_hours, rt_mins, rt_secs);
+    tft.println(buff);
   
-  sprintf(buff, "RAM: %d/%d (%.1f%%)", mem_free, mem_total, ((float)mem_free / (float)mem_total) * 100.0f);
-  tft.println(buff);
-  
-  //*
-  float last_delta_s = last_delta * 0.001f;
-  
-  sprintf(buff, "Tick: %0.4f, FPS: %0.2f",last_delta_s, 1 / last_delta_s);
-  tft.println(buff);
-  //*/
+    unsigned int mem_free = getFreeRam();
+    unsigned int mem_total = getTotalRam();
     
-  sprintf(buff, "Ver: %d.%d.%d, Run: #%d", getVersionMajor(), getVersionMinor(), getVersionPatch(), persistenceInfo.bootNo);
-  tft.println(buff);
+    sprintf(buff, "RAM: %d/%d (%.1f%%)", mem_free, mem_total, ((float)mem_free / (float)mem_total) * 100.0f);
+    tft.println(buff);
+    
+    //*
+    float last_delta_s = last_delta * 0.001f;
+    
+    sprintf(buff, "Tick: %0.4f, FPS: %0.2f",last_delta_s, 1 / last_delta_s);
+    tft.println(buff);
+    //*/
+      
+    sprintf(buff, "Ver: %d.%d.%d, Run: #%d", getVersionMajor(), getVersionMinor(), getVersionPatch(), persistenceInfo.bootNo);
+    tft.println(buff);
+  #endif // DISPLAY_STATS
   
   // tft.setTextColor(ILI9340_RED, ILI9340_BLACK);
   // tft.setTextSize(3);

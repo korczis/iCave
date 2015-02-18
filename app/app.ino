@@ -7,21 +7,6 @@
 // Global iCave App specific includes
 #include "general.h"
 
-// App configuration related defines
-#define SERIAL (1)
-#define SERIAL_WAIT (0) // Wait for Arduino IDE "Serial Monitor to get connected"
-
-#define ENABLE_WIFI (0)
-
-#define ENABLE_DISPLAY (1)
-#define ENABLE_DISPLAY_TEST_LOOP (0)
-
-#define ENABLE_GPS (1)
-#define ENABLE_SD_CARD (1)
-#define ENABLE_TSL_2561 (1)
-#define ENABLE_SNOOZE (0)
-#define ENABLE_DHT (1)
-
 // Modules
 #include "serial.h"
 #include "eeprom.h"
@@ -150,6 +135,8 @@ unsigned long last_delta = 0;
 /**
  * @brief Main loop
  */
+unsigned int tickNo = 0;
+
 void loop(void) {
   const int tick_start = millis();
 
@@ -166,7 +153,9 @@ void loop(void) {
   #endif // ENABLE_DISPLAY
 
   #if ENABLE_DHT
-    loopDht();
+    if((tickNo % 10) == 0) {
+      loopDht();
+    }
   #endif // ENABLE_DHT
   
   if(LOOP_TYPE == LT_FIXED_SLEEP) {
@@ -179,11 +168,13 @@ void loop(void) {
     const int tick_loop = millis() - tick_start; // TODO: Review this
     const int sleep_time = (LOOP_SLEEP_TIME - tick_loop);
 
-    char buffer[128];
-    sprintf(buffer, "loop() - sleep_time == %d", sleep_time);
-    Serial.println(buffer);
-
-    delay(sleep_time >= 0 ? sleep_time : 1);
+    if(sleep_time > 0) {
+      char buffer[128];
+      sprintf(buffer, "loop() - sleep_time == %d", sleep_time);
+      Serial.println(buffer);
+    
+      delay(sleep_time >= 0 ? sleep_time : 1);
+    }
   } // LT_FIXED_FPS
 
   #if ENABLE_SNOOZE
@@ -192,6 +183,8 @@ void loop(void) {
 
   // Measure tick time
   last_delta = millis() - tick_start;
+  
+  tickNo++;
 }
 
 

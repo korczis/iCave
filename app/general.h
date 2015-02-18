@@ -9,6 +9,23 @@
   #define ICAVE_VERSION_MINOR (0)
   #define ICAVE_VERSION_PATCH (1)
 
+  // App configuration related defines
+  #define SERIAL (1)
+  #define SERIAL_WAIT (0) // Wait for Arduino IDE "Serial Monitor to get connected"
+  
+  #define ENABLE_WIFI (0)
+  
+  #define ENABLE_DISPLAY (1)
+  #define ENABLE_DISPLAY_TEST_LOOP (0)
+  
+  #define ENABLE_GPS (1)
+  #define ENABLE_SD_CARD (0)
+  #define ENABLE_TSL_2561 (0)
+  #define ENABLE_SNOOZE (0)
+  #define ENABLE_DHT (0)
+
+  #define DISPLAY_STATS (1)
+  
   typedef enum E_LOOP_TYPE {
     LT_UNKNOWN = -1,
     LT_FIXED_SLEEP,
@@ -20,9 +37,9 @@
   E_LOOP_TYPE;
   
   // Global configuration
-  #define LOOP_TYPE (LT_FIXED_FPS)
+  #define LOOP_TYPE (LT_FIXED_SLEEP)
   #define LOOP_INTERVAL (16)
-  #define LOOP_FPS (1.0f)
+  #define LOOP_FPS (30.0f)
 
   unsigned int getTotalRam();
   
