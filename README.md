@@ -82,3 +82,10 @@ Your Cave's Web Interface
   - TKIP & AES
   - Built in TCP/IP stack
   - "BSD socket" interface
+
+- [nRF24L01]
+
+  Radio/Wireless Transceiver
+
+  - 2.4GHz RF
+  - [How To](http://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo)
