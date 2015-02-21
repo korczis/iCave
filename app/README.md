@@ -45,10 +45,11 @@
 - serial.h
 - serial.cpp
 
-## EEPROM
+## TSL2561
 
-- eeprom.h
-- eeprom.cpp
+- tsl_2561.h
+- tsl_2561.cpp
+
 ## Wi-fi
 
 - wifi.h
