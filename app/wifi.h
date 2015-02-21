@@ -1,5 +1,7 @@
 #ifndef ICAVE_WIFI_H
 #define ICAVE_WIFI_H
+  #include "module.h"
+  
   #include <Adafruit_CC3000.h>
   #include <Adafruit_CC3000_Server.h>
   #include <ccspi.h>
@@ -14,5 +16,12 @@
   
   extern Adafruit_CC3000 cc3000; 
   
-  void setupWifi();
+  namespace iCave {
+    class WifiModule : public Module {
+    public:
+      WifiModule(Manager* manager) : Module(manager) {} 
+      
+      void setup();
+    }; // WifiModule
+  }; // namespace iCave
 #endif // ICAVE_WIFI_H

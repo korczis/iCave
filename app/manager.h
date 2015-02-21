@@ -27,6 +27,8 @@ namespace iCave {
       return registerModule(createModule<T>());
     }
     
+    static void printInfo();
+    
   private:
     std::vector<Module*> mModules;
   }; // class Manager

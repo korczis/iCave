@@ -13,17 +13,16 @@
   #define SERIAL (1)
   #define SERIAL_WAIT (0) // Wait for Arduino IDE "Serial Monitor to get connected"
   
-  #define ENABLE_WIFI (0)
-  
   #define ENABLE_DISPLAY (1)
   #define ENABLE_DISPLAY_TEST_LOOP (0)
   
   #define ENABLE_GPS (1)
-  #define ENABLE_SD_CARD (0)
+  #define ENABLE_SD_CARD (1)
   #define ENABLE_TSL_2561 (1)
-  #define ENABLE_SNOOZE (0)
+  #define ENABLE_SNOOZE (1)
   #define ENABLE_DHT (1)
-
+  #define ENABLE_WIFI (1)
+ 
   #define DISPLAY_STATS (1)
   
   typedef enum E_LOOP_TYPE {

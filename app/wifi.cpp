@@ -1,10 +1,12 @@
 #include "wifi.h"
 
+using namespace iCave;
+
 // Use hardware SPI for the remaining pins
 // On an UNO, SCK = 13, MISO = 12, and MOSI = 11
 Adafruit_CC3000 cc3000 = Adafruit_CC3000(ADAFRUIT_CC3000_CS, ADAFRUIT_CC3000_IRQ,  ADAFRUIT_CC3000_VBAT, SPI_CLOCK_DIVIDER);
 
-void setupWifi() {
+void WifiModule::setup() {
   if(Serial) {
     Serial.println("Setting up CC3000 ...");
   }

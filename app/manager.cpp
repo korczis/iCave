@@ -1,6 +1,8 @@
 #include "./manager.h"
 #include "module.h"
 
+#include "general.h"
+
 using namespace iCave;
 
 void Manager::setup() {

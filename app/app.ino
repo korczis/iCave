@@ -10,6 +10,25 @@
 
 iCave::Manager manager;
 
+void printInfo() {
+  if(Serial) {
+    Serial.print("ENABLE_WIFI = ");
+    Serial.println(ENABLE_WIFI);
+
+    Serial.print("ENABLE_DISPLAY = ");
+    Serial.println(ENABLE_DISPLAY);
+
+    Serial.print("ENABLE_GPS = ");
+    Serial.println(ENABLE_GPS);
+
+    Serial.print("ENABLE_SD_CARD = ");
+    Serial.println(ENABLE_SD_CARD);
+
+    Serial.print("ENABLE_TSL_2561 = ");
+    Serial.println(ENABLE_TSL_2561);
+  }
+}
+
 // Core Modules
 #include "serial.h"
 #include "eeprom.h"
@@ -52,25 +71,6 @@ iCave::Manager manager;
   
   #include "./sd_card.h"
 #endif // ENABLE_SD_CARD
-
-void printInfo() {
-  if(Serial) {
-    Serial.print("ENABLE_WIFI = ");
-    Serial.println(ENABLE_WIFI);
-
-    Serial.print("ENABLE_DISPLAY = ");
-    Serial.println(ENABLE_DISPLAY);
-
-    Serial.print("ENABLE_GPS = ");
-    Serial.println(ENABLE_GPS);
-
-    Serial.print("ENABLE_SD_CARD = ");
-    Serial.println(ENABLE_SD_CARD);
-
-    Serial.print("ENABLE_TSL_2561 = ");
-    Serial.println(ENABLE_TSL_2561);
-  }
-}
 
 #if ENABLE_SNOOZE
   // Snooze
@@ -115,14 +115,18 @@ void setup() {
   #if ENABLE_TSL_2561
     manager.createAndRegisterModule<iCave::Tsl2561Module>();
   #endif // ENABLE_TSL_2561
+  
+  #if ENABLE_WIFI
+    manager.createAndRegisterModule<iCave::WifiModule>();
+  #endif // WIFI_ENABLED
 
   // Setup modules registered in manager
   manager.setup();    
   
   // Setup sleep mode
-#if ENABLE_SNOOZE
-  setupSleepMode();
-#endif // ENABLE_SNOOZE
+  #if ENABLE_SNOOZE
+    setupSleepMode();
+  #endif // ENABLE_SNOOZE
 
   // Print banner
   char buff[128];
@@ -135,10 +139,6 @@ void setup() {
 #if ENABLE_SD_CARD
   sdInited = setupSdCard();
 #endif // ENABLE_SD_CARD
-
-#if ENABLE_WIFI
-  setupWifi();
-#endif // WIFI_ENABLED
 }
 
 unsigned long last_delta = 0;
