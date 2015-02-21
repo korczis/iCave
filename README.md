@@ -83,7 +83,7 @@ Your Cave's Web Interface
   - Built in TCP/IP stack
   - "BSD socket" interface
 
-- [nRF24L01]
+- [nRF24L01](http://playground.arduino.cc/InterfacingWithHardware/Nrf24L01) (~ $1-5)
 
   Radio/Wireless Transceiver
 
