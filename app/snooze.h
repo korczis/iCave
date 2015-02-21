@@ -15,6 +15,7 @@
     public:
       SnoozeModule(Manager* manager) : Module(manager) {} 
       
+      /* virtual */ void setup();
       /* virtual */ void loop();
     }; // SnoozeModule    
   }; // namespace iCave

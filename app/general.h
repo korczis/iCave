@@ -37,10 +37,10 @@
   } 
   E_LOOP_TYPE;
   
-  // Global configuration
+  // Global LT_FIXED_SLEEP
   #define LOOP_TYPE (LT_FIXED_FPS)
   #define LOOP_INTERVAL (16)
-  #define LOOP_FPS (30.0f)
+  #define LOOP_FPS (20.0f)
 
   unsigned int getTotalRam();
   

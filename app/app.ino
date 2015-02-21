@@ -88,6 +88,11 @@ void printInfo() {
  * @brief Main setup
  */
 void setup() {  
+  // Print banner
+  char buff[128];
+  sprintf(buff, "iCave %d.%d.%d", getVersionMajor(), getVersionMinor(), getVersionPatch());
+  Serial.println(buff);
+  
   #if ENABLE_SERIAL
     manager.createAndRegisterModule<iCave::SerialModule>();
   #endif // ENABLE_SERIAL
@@ -122,22 +127,11 @@ void setup() {
 
   #if ENABLE_SNOOZE
     manager.createAndRegisterModule<iCave::SnoozeModule>();
-    // LP.Sleep();
   #endif // ENABLE_SNOOZE
   
   // Setup modules registered in manager
   manager.setup();    
   
-  // Setup sleep mode
-  #if ENABLE_SNOOZE
-    setupSleepMode();
-  #endif // ENABLE_SNOOZE
-
-  // Print banner
-  char buff[128];
-  sprintf(buff, "iCave %d.%d.%d", getVersionMajor(), getVersionMinor(), getVersionPatch());
-  Serial.println(buff); 
-
   // Print info about enabled components
   printInfo();
 }

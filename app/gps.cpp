@@ -17,6 +17,7 @@ Adafruit_GPS GPS(&Serial1);
 extern int getFreeRam(void);
 extern unsigned long last_tick;
 extern float fps;
+extern float last_tick_diff;
 
 // this keeps track of whether we're using the interrupt
 // off by default!
@@ -56,6 +57,7 @@ void GpsModule::setup() {
 
   delay(1000);
   // Ask for firmware version
+  Serial.print("GPS: ");
   Serial.println(PMTK_Q_RELEASE);
 }
 
