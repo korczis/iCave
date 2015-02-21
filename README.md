@@ -19,7 +19,7 @@ Your Cave's Web Interface
   - USB / Serial / SPI / I2C / CAN / I2S
   - 5V tolerant digital inputs
 
-- [ST7735R](https://www.adafruit.com/product/358)
+- [ST7735R](https://www.adafruit.com/product/358) (~ $20)
 
   Display that uses 4-wire SPI to communicate and has its own pixel-addressable frame buffer, it can be used with every kind of microcontroller.
   
