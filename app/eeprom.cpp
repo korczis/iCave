@@ -1,26 +1,28 @@
-#include "eeprom.h"
+#include "./eeprom.h"
 
-PersistentInfo persistenceInfo;
+using namespace iCave;
 
-void readPersistentInfo() {
+EepromModule::PersistentInfo persistenceInfo;
+
+void EepromModule::readPersistentInfo() {
   for(unsigned int i = 0; i < sizeof(PersistentInfo); i++) {
     ((unsigned char*)&persistenceInfo)[i] = EEPROM.read(i);
   }
 }
 
-void writePersistentInfo() {
+void EepromModule::writePersistentInfo() {
   for(unsigned int i = 0; i < sizeof(PersistentInfo); i++) {
     EEPROM.write(i, ((unsigned char*)&persistenceInfo)[i]);
   }
 }
 
-void clearEeprom() {
+void EepromModule::clearEeprom() {
   for(unsigned short i = 0; i < getEepromSize(); i++) {
     EEPROM.write(i, 0);
   }
 }
 
-void setupEeprom() {
+void EepromModule::setup() {
   // clearEeprom();
   
   readPersistentInfo();

@@ -1,5 +1,6 @@
 #include "dht.h"
 
+using namespace iCave;
 
 DHT dht(DHTPIN, DHTTYPE, 20);
 
@@ -7,11 +8,11 @@ float dhtHumidity = 0;
 float dhtTemperature = 0;
 float dhtHeatIndex = 0;
 
-void setupDht() {
+void DhtModule::setup() {
     dht.begin();
 }
 
-void loopDht() {
+void DhtModule::loop() {
   // Reading temperature or humidity takes about 250 milliseconds!
   
   // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)

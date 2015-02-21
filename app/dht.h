@@ -1,5 +1,7 @@
 #ifndef ICAVE_DHT_H
 #define ICAVE_DHT_H
+  #include "module.h"
+  
   #include <DHT.h>
 
   #define DHTPIN (2)     // what pin we're connected to
@@ -15,9 +17,14 @@
   extern float dhtTemperature;
   extern float dhtHeatIndex;
 
-  void setupDht();
+  namespace iCave {
+    class DhtModule : public Module {
+    public:
+      DhtModule(Manager* manager) : Module(manager) {} 
+      /* virtual */ void setup();
   
-  void loopDht();
-
+      /* virtual */ void loop();
+    }; // class DhtModule
+  }; // namespace iCave
 #endif // ICAVE_DHT_H
 

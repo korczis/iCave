@@ -1,7 +1,9 @@
 #ifndef ICAVE_GPS_H
 #define ICAVE_GPS_H
+  #include "module.h"
+  
   #include <Adafruit_GPS.h>
-
+  
   extern Adafruit_GPS GPS;
   
   extern boolean usingInterrupt;
@@ -12,10 +14,16 @@
 
   #define GPS_BAUDRATE (9600)
   
-  void setupGps();
+  namespace iCave {
+    class GpsModule : public Module {
+    public:
+      GpsModule(Manager* manager) : Module(manager) {} 
+      /* virtual */ void setup(/* int wait_for_serial = false */);
+      
+      void updateDisplay();
   
-  void updateDisplay();
-  
-  void loopGps();
+      /* virtual */ void loop();
+    }; // class GpsModule
+  }; // namespace iCave
 #endif // ICAVE_GPS_H
 

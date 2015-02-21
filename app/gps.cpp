@@ -1,15 +1,16 @@
-#include "gps.h"
-#include "general.h"
-#include "eeprom.h"
+#include "./display.h"
+#include "./gps.h"
+#include "./general.h"
+#include "./eeprom.h"
 #include "./dht.h"
+#include "./tsl_2561.h"
+
+using namespace iCave;
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
 #include <stdio.h>
-
-#include "general.h"
-#include "display.h"
 
 Adafruit_GPS GPS(&Serial1);
 
@@ -23,7 +24,7 @@ void useInterrupt(boolean val) {
   usingInterrupt = val;
 }
 
-void setupGps() {
+void GpsModule::setup() {
   if(Serial) {
     Serial.println("Setting up GPS ...");
   }
@@ -59,7 +60,7 @@ void setupGps() {
 
 extern unsigned short bootNo;
 
-void updateDisplay() {
+void GpsModule::updateDisplay() {
   tft.setCursor(0, 0);
   // tft.fillScreen(ILI9340_BLACK);
   tft.setTextColor(ILI9340_GREEN, ILI9340_BLACK);
@@ -84,8 +85,8 @@ void updateDisplay() {
   sprintf(buff, "Speed: %.2f", GPS.speed);
   tft.println(buff);
   
-  sprintf(buff, "Angle: %.2f", GPS.angle);
-  tft.println(buff);
+  // sprintf(buff, "Angle: %.2f", GPS.angle);
+  // tft.println(buff);
   
   sprintf(buff, "Altitude: %.2f", GPS.altitude);
   tft.println(buff);
@@ -107,7 +108,12 @@ void updateDisplay() {
     
     // tft.println();
   #endif // ENABLE_DHT
-
+  
+  #if ENABLE_TSL_2561
+    sprintf(buff, "Lux: %.2f", lux);
+    tft.println(buff);
+  #endif // ENABLE_2561
+  
   unsigned int raw_secs = millis() * 0.001f;
   
   const unsigned int rt_days = raw_secs / 86400;
@@ -148,7 +154,7 @@ void updateDisplay() {
 }
 
 uint32_t timer = millis();
-void loopGps() {
+void GpsModule::loop() {
   //*
   // in case you are not using the interrupt above, you'll
   // need to 'hand query' the GPS, not suggested :(

@@ -1,15 +1,42 @@
 // Core includes
-#include "SPI.h"
+#include <SPI.h>
 #include <Wire.h>
 #include <wiring.h>
 #include <EEPROM.h>  
 
 // Global iCave App specific includes
-#include "general.h"
+#include "./general.h"
+#include "./manager.h"
 
-// Modules
+iCave::Manager manager;
+
+// Core Modules
 #include "serial.h"
 #include "eeprom.h"
+
+#if ENABLE_DISPLAY
+  #include "Adafruit_GFX.h"
+  // #include "Adafruit_ILI9340.h"
+  #include "TFT_ILI9340.h"
+  
+  #include "./display.h"
+#endif // ENABLE_DISPLAY
+
+#if ENABLE_DHT
+  #include <DHT.h>
+  #include "dht.h"
+#endif // ENABLE_DHT
+
+#if ENABLE_GPS
+  #include <Adafruit_GPS.h>
+  
+  #include "gps.h"
+#endif // ENABLE_GPS
+
+#if ENABLE_TSL_2561
+  #include "TSL2561.h"
+  #include "tsl_2561.h"
+#endif // ENABLE_TSL_2561
 
 #if ENABLE_WIFI
   #include <Adafruit_CC3000.h>
@@ -19,35 +46,12 @@
   #include "wifi.h"
 #endif // ENABLE_WIFI
 
-#if ENABLE_DISPLAY
-  #include "Adafruit_GFX.h"
-  // #include "Adafruit_ILI9340.h"
-  #include "TFT_ILI9340.h"
-  
-  #include "display.h"
-#endif // ENABLE_DISPLAY
-
-#if ENABLE_GPS
-  #include <Adafruit_GPS.h>
-  
-  #include "gps.h"
-#endif // ENABLE_GPS
-
 #if ENABLE_SD_CARD
   // include the SD library:
   #include <SD.h>
   
-  #include "sd_card.h"
+  #include "./sd_card.h"
 #endif // ENABLE_SD_CARD
-
-#if ENABLE_TSL_2561
-  #include "TSL2561.h"
-#endif // ENABLE_TSL_2561
-
-#if ENABLE_DHT
-  #include <DHT.h>
-  #include "dht.h"
-#endif // ENABLE_DHT
 
 void printInfo() {
   if(Serial) {
@@ -69,37 +73,52 @@ void printInfo() {
 }
 
 #if ENABLE_SNOOZE
-// Snooze
-// #include <Snooze.h>
-#include <LowPower_Teensy3.h>
-
-TEENSY3_LP LP = TEENSY3_LP();
-
-void callbackhandler() {
-  digitalWrite(LED_BUILTIN, HIGH);
-  delay(100);
-  digitalWrite(LED_BUILTIN, LOW);
-}
-
-void setupSleepMode() {
-  pinMode(LED_BUILTIN, OUTPUT);
-  pinMode(0, INPUT_PULLUP);
-  attachInterrupt(0, callbackhandler, RISING);
-}
+  // Snooze
+  // #include <Snooze.h>
+  #include <LowPower_Teensy3.h>
+  
+  TEENSY3_LP LP = TEENSY3_LP();
+  
+  void callbackhandler() {
+    digitalWrite(LED_BUILTIN, HIGH);
+    delay(100);
+    digitalWrite(LED_BUILTIN, LOW);
+  }
+  
+  void setupSleepMode() {
+    pinMode(LED_BUILTIN, OUTPUT);
+    pinMode(0, INPUT_PULLUP);
+    attachInterrupt(0, callbackhandler, RISING);
+  }
 #endif // ENABLE_SNOOZE
-
-
 
 /**
  * @brief Main setup
  */
 void setup() {
-  // First setup serial port for communicating with PC
-  setupSerial(SERIAL_WAIT);
+  manager.createAndRegisterModule<iCave::SerialModule>();
+  
+  manager.createAndRegisterModule<iCave::EepromModule>();
+  
+  #if ENABLE_DISPLAY
+    manager.createAndRegisterModule<iCave::DisplayModule>();
+  #endif // ENABLE_DISPLAY
+  
+  #if ENABLE_DHT
+    manager.createAndRegisterModule<iCave::DhtModule>();
+  #endif // ENABLE_DHT
+  
+  #if ENABLE_GPS
+    manager.createAndRegisterModule<iCave::GpsModule>();
+  #endif // ENABLE_GPS
+  
+  #if ENABLE_TSL_2561
+    manager.createAndRegisterModule<iCave::Tsl2561Module>();
+  #endif // ENABLE_TSL_2561
 
-  // Setup EEPROM
-  setupEeprom();
-
+  // Setup modules registered in manager
+  manager.setup();    
+  
   // Setup sleep mode
 #if ENABLE_SNOOZE
   setupSleepMode();
@@ -117,17 +136,9 @@ void setup() {
   sdInited = setupSdCard();
 #endif // ENABLE_SD_CARD
 
-#if ENABLE_GPS
-  setupGps();
-#endif // ENABLE_GPS
-
 #if ENABLE_WIFI
   setupWifi();
 #endif // WIFI_ENABLED
-
-#if ENABLE_DISPLAY
-  setupDisplay();
-#endif // ENABLE_DISPLAY
 }
 
 unsigned long last_delta = 0;
@@ -139,10 +150,11 @@ unsigned int tickNo = 0;
 
 void loop(void) {
   const int tick_start = millis();
+  
+  // Loop modules registered in manager
+  manager.loop();  
 
-  #if ENABLE_GPS
-    loopGps();
-  #endif // ENABLE_GPS
+  // testDisplay();
   
   #if ENABLE_DISPLAY && ENABLE_DISPLAY_TEST_LOOP
     for(uint8_t rotation = 0; rotation < 4; rotation++) {
@@ -150,14 +162,8 @@ void loop(void) {
       testDisplay();
       delay(2000);
     }    
-  #endif // ENABLE_DISPLAY
-
-  #if ENABLE_DHT
-    if((tickNo % 10) == 0) {
-      loopDht();
-    }
-  #endif // ENABLE_DHT
-  
+  #endif // ENABLE_DISPLAY  
+ 
   if(LOOP_TYPE == LT_FIXED_SLEEP) {
     // Sleep for some time, if needed
     delay(LOOP_INTERVAL);
@@ -186,7 +192,4 @@ void loop(void) {
   
   tickNo++;
 }
-
-
-
 

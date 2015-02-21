@@ -20,9 +20,9 @@
   
   #define ENABLE_GPS (1)
   #define ENABLE_SD_CARD (0)
-  #define ENABLE_TSL_2561 (0)
+  #define ENABLE_TSL_2561 (1)
   #define ENABLE_SNOOZE (0)
-  #define ENABLE_DHT (0)
+  #define ENABLE_DHT (1)
 
   #define DISPLAY_STATS (1)
   

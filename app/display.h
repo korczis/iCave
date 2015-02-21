@@ -1,6 +1,7 @@
 #ifndef ICAVE_DISPLAY_H
 #define ICAVE_DISPLAY_H
-
+  #include "module.h"
+  
   #include "SPI.h"
   #include "Adafruit_GFX.h"
   // #include "Adafruit_ILI9340.h"
@@ -31,32 +32,39 @@
   // Adafruit_ILI9340 tft = Adafruit_ILI9340(_cs, _dc, _rst);
   extern TFT_ILI9340 tft;
 
-  unsigned long testFillScreen();
+  namespace iCave {
+    class DisplayModule : public Module {
+    public:
+      DisplayModule(Manager* manager) : Module(manager) {} 
+      
+      unsigned long testFillScreen();
+      
+      unsigned long testText();
+      
+      unsigned long testLines(uint16_t color);
+      
+      unsigned long testFastLines(uint16_t color1, uint16_t color2);
+      
+      unsigned long testRects(uint16_t color);
+      
+      unsigned long testFilledRects(uint16_t color1, uint16_t color2);
+      
+      unsigned long testFilledCircles(uint8_t radius, uint16_t color);
+      
+      unsigned long testCircles(uint8_t radius, uint16_t color);
+      
+      unsigned long testTriangles();
+      
+      unsigned long testFilledTriangles();
+      
+      unsigned long testRoundRects();
+      
+      unsigned long testFilledRoundRects();
+      
+      void testDisplay();
+      
+      void setup();
+    }; // class DisplayModule
+  }; // namespace iCave
   
-  unsigned long testText();
-  
-  unsigned long testLines(uint16_t color);
-  
-  unsigned long testFastLines(uint16_t color1, uint16_t color2);
-  
-  unsigned long testRects(uint16_t color);
-  
-  unsigned long testFilledRects(uint16_t color1, uint16_t color2);
-  
-  unsigned long testFilledCircles(uint8_t radius, uint16_t color);
-  
-  unsigned long testCircles(uint8_t radius, uint16_t color);
-  
-  unsigned long testTriangles();
-  
-  unsigned long testFilledTriangles();
-  
-  unsigned long testRoundRects();
-  
-  unsigned long testFilledRoundRects();
-  
-  void testDisplay();
-  
-  void setupDisplay();
-
 #endif // ICAVE_DISPLAY_H
