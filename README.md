@@ -20,5 +20,5 @@ Your Cave's Web Interface
   - 802.11b/g
   - Open/WEP/WPA/WPA2 security,
   - TKIP & AES
-  - Built in TCP/IP stack with
+  - Built in TCP/IP stack
   - "BSD socket" interface
