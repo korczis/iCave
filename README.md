@@ -20,6 +20,18 @@ Your Cave's Web Interface
   - USB / Serial / SPI / I2C / CAN / I2S
   - 5V tolerant digital inputs
 
+- [TSL2561](https://www.adafruit.com/products/439)
+
+  The TSL2561 luminosity sensor is an advanced digital light sensor
+  
+  - Approximates Human eye Response
+  - Precisely Measures Illuminance in Diverse Lighting Conditions
+  - Temperature range: -30 to 80 *C
+  - Dynamic range (Lux): 0.1 to 40,000 Lux
+  - Voltage range: 2.7-3.6V
+  - Interface: I2C
+  - I2C 7-bit addresses 0x39, 0x29, 0x49, selectable with jumpers
+  
 - [Wifi CC3000](https://www.adafruit.com/products/1469) 
 
   - Microcontroller-friendly WiFi module
