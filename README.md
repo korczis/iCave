@@ -96,3 +96,9 @@ Your Cave's Web Interface
 
   - 2.4GHz RF
   - [How To](http://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo)
+
+- [RFID-RC522](http://devsketches.blogspot.cz/2014/05/rfid-sensor-funduino-rfid-rc522.html) (~ $6)
+
+  RFID sensor
+  
+  
