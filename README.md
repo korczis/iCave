@@ -19,6 +19,16 @@ Your Cave's Web Interface
   - USB / Serial / SPI / I2C / CAN / I2S
   - 5V tolerant digital inputs
 
+- [DHT22](https://www.adafruit.com/product/393)
+
+  Basic, low-cost digital temperature and humidity sensor. It uses a capacitive humidity sensor and a thermistor to measure the surrounding air, and spits out a digital signal on the data pin.
+  
+  - Low cost
+  - 3 to 5V power and I/O
+  - 2.5mA max current use 
+  - 0-100% humidity readings with 2-5% accuracy
+  - -40 to 80°C temperature readings ±0.5°C accuracy
+  
 - [GPS](https://www.adafruit.com/products/746)
 
   High-quality GPS module that can track up to 22 satellites on 66 channels and has an excellent high-sensitivity receiver.
