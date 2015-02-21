@@ -76,7 +76,8 @@ Your Cave's Web Interface
   
 - [Wifi CC3000](https://www.adafruit.com/products/1469) (~ $35)
 
-  - Microcontroller-friendly WiFi module
+  Microcontroller-friendly WiFi module
+  
   - 802.11b/g
   - Open/WEP/WPA/WPA2 security,
   - TKIP & AES
