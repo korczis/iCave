@@ -20,6 +20,21 @@ Your Cave's Web Interface
   - USB / Serial / SPI / I2C / CAN / I2S
   - 5V tolerant digital inputs
 
+- [GPS](https://www.adafruit.com/products/746)
+
+  High-quality GPS module that can track up to 22 satellites on 66 channels and has an excellent high-sensitivity receiver.
+  
+  - 165 dBm sensitivity, 10 Hz updates, 66 channels
+  - 5V friendly design
+  - Only 20mA current draw
+  - Breadboard friendly + two mounting holes
+  - RTC battery-compatible
+  - Built-in datalogging
+  - PPS output on fix
+  - Internal patch antenna
+  - u.FL connector for external active antenna
+  - Fix status LED
+
 - [TSL2561](https://www.adafruit.com/products/439)
 
   The TSL2561 luminosity sensor is an advanced digital light sensor
