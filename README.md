@@ -19,6 +19,22 @@ Your Cave's Web Interface
   - USB / Serial / SPI / I2C / CAN / I2S
   - 5V tolerant digital inputs
 
+- [ST7735R](https://www.adafruit.com/product/358)
+
+  Display that uses 4-wire SPI to communicate and has its own pixel-addressable frame buffer, it can be used with every kind of microcontroller.
+  
+  - 1.8" diagonal LCD TFT display
+  - 128x160 resolution, 18-bit (262,144) color
+  - ST7735R (datasheet) controller with built in pixel-addressable video RAM buffer
+  - 4 or 5 wire SPI digital interface
+  - Built-in microSD slot - uses 2 more digital lines
+  - 5V compatible, use with 3.3V or 5V logic
+  - Onboard 3.3V @ 150mA LDO regulator
+  - 2 white LED backlight, transistor connected so you can PWM dim the backlight
+  - 1x10 header for easy breadboarding
+  - 4 x 0.9"/2mm mounting holes in corners
+  - Current with full backlight draw is ~50mA
+
 - [DHT22](https://www.adafruit.com/product/393) (~ $15)
 
   Basic, low-cost digital temperature and humidity sensor. It uses a capacitive humidity sensor and a thermistor to measure the surrounding air, and spits out a digital signal on the data pin.
