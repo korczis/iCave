@@ -1,12 +1,14 @@
 #include "sd_card.h"
 
+using namespace iCave;
+
 Sd2Card card;
 SdVolume volume;
 SdFile root;
   
 boolean sdInited = false;
 
-boolean setupSdCard() {
+void SdCardModule::setup() {
   if(Serial) {
     Serial.println("Setting up SD Card ...");
   }
@@ -25,7 +27,8 @@ boolean setupSdCard() {
     Serial.println("* is a card is inserted?");
     Serial.println("* Is your wiring correct?");
     Serial.println("* did you change the chipSelect pin to match your shield or module?");
-    return false;
+    sdInited = false;
+    return;
   } 
   else {
     Serial.println("Wiring is correct and a card is present."); 
@@ -50,7 +53,8 @@ boolean setupSdCard() {
   // Now we will try to open the 'volume'/'partition' - it should be FAT16 or FAT32
   if (!volume.init(card)) {
     Serial.println("Could not find FAT16/FAT32 partition.\nMake sure you've formatted the card");
-    return false;
+    sdInited = false;
+    return;
   }
 
   // print the type and size of the first FAT-type volume
@@ -78,5 +82,5 @@ boolean setupSdCard() {
   // list all files in the card with date and size
   root.ls(LS_R | LS_DATE | LS_SIZE);
 
-  return true;
+  sdInited = true;
 }
