@@ -2,7 +2,15 @@
 
 Your Cave's Web Interface
 
-# Hardware
+## Structure
+
+- [Software Structure](https://github.com/korczis/iCave/blob/master/app/README.md)
+
+## Images
+
+![Display Image](https://raw.githubusercontent.com/korczis/iCave/master/imgs/display.jpg)
+
+## Hardware
 
 - [Teensy 3.1](https://www.pjrc.com/teensy/teensy31.html) (~ $20)
   
@@ -74,9 +82,23 @@ Your Cave's Web Interface
   
 - [Wifi CC3000](https://www.adafruit.com/products/1469) (~ $35)
 
-  - Microcontroller-friendly WiFi module
+  Microcontroller-friendly WiFi module
+  
   - 802.11b/g
   - Open/WEP/WPA/WPA2 security,
   - TKIP & AES
   - Built in TCP/IP stack
   - "BSD socket" interface
+
+- [nRF24L01](http://playground.arduino.cc/InterfacingWithHardware/Nrf24L01) (~ $1-5)
+
+  Radio/Wireless Transceiver
+
+  - 2.4GHz RF
+  - [How To](http://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo)
+
+- [RFID-RC522](http://devsketches.blogspot.cz/2014/05/rfid-sensor-funduino-rfid-rc522.html) (~ $6)
+
+  RFID sensor
+  
+  
