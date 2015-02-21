@@ -16,6 +16,8 @@
   #define ENABLE_DISPLAY (1)
   #define ENABLE_DISPLAY_TEST_LOOP (0)
   
+  #define ENABLE_SERIAL (1)
+  #define ENABLE_EEPROM(1)
   #define ENABLE_GPS (1)
   #define ENABLE_SD_CARD (1)
   #define ENABLE_TSL_2561 (1)

@@ -30,8 +30,13 @@ void printInfo() {
 }
 
 // Core Modules
-#include "serial.h"
-#include "eeprom.h"
+#if ENABLE_SERIAL
+  #include "serial.h"
+#endif // ENABLE_SERIAL
+
+#if ENABLE_EEPROM
+  #include "eeprom.h"
+#endif // ENABLE_EEPROM
 
 #if ENABLE_DISPLAY
   #include "Adafruit_GFX.h"
@@ -96,10 +101,18 @@ void printInfo() {
  * @brief Main setup
  */
 void setup() {
-  manager.createAndRegisterModule<iCave::SerialModule>();
+  #if ENABLE_SERIAL
+    manager.createAndRegisterModule<iCave::SerialModule>();
+  #endif // ENABLE_SERIAL
   
-  manager.createAndRegisterModule<iCave::EepromModule>();
+  #if ENABLE_EEPROM
+    manager.createAndRegisterModule<iCave::EepromModule>();
+  #endif // ENABLE_EEPROM
   
+  #if ENABLE_SD_CARD
+    manager.createAndRegisterModule<iCave::SdCardModule>();
+  #endif // ENABLE_SD_CARD
+
   #if ENABLE_DISPLAY
     manager.createAndRegisterModule<iCave::DisplayModule>();
   #endif // ENABLE_DISPLAY
@@ -135,10 +148,6 @@ void setup() {
 
   // Print info about enabled components
   printInfo();
-
-#if ENABLE_SD_CARD
-  sdInited = setupSdCard();
-#endif // ENABLE_SD_CARD
 }
 
 unsigned long last_delta = 0;
