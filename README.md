@@ -10,8 +10,7 @@ Your Cave's Web Interface
 
   - Processor: MK20DX256VLH7 
   - Core: Cortex-M4
-  - Clock: 72 MHz
-  - Overclock: 96 MHz
+  - Clock: 72 MHz / Overclock: 96 MHz
   - Flash Memory: 256 kB
   - Cache: 256 B
   - RAM: 64 kB
