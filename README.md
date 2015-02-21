@@ -2,9 +2,15 @@
 
 Your Cave's Web Interface
 
+## Structure
+
+- [Software Structure](https://github.com/korczis/iCave/blob/master/app/README.md)
+
+## Images
+
 ![Display Image](https://raw.githubusercontent.com/korczis/iCave/master/imgs/display.jpg)
 
-# Hardware
+## Hardware
 
 - [Teensy 3.1](https://www.pjrc.com/teensy/teensy31.html) (~ $20)
   
