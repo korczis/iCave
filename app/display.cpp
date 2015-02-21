@@ -1,4 +1,5 @@
 #include "display.h"
+#include "general.h"
 
 using namespace iCave;
 
@@ -315,4 +316,15 @@ void DisplayModule::setup() {
   tft.fillScreen(ILI9340_BLACK);
   tft.setRotation(1);
 }
+
+void DisplayModule::loop() {
+  #if ENABLE_DISPLAY_TEST_LOOP
+    for(uint8_t rotation = 0; rotation < 4; rotation++) {
+      tft.setRotation(rotation);
+      testDisplay();
+      delay(2000);
+    }    
+  #endif // ENABLE_DISPLAY  
+}
+
 

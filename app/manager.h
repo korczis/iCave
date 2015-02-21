@@ -3,6 +3,8 @@
 
 #include <vector>
 
+extern unsigned long last_tick;
+
 namespace iCave {
   class Module;
   

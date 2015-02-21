@@ -64,6 +64,9 @@
       void testDisplay();
       
       void setup();
+      
+      void loop();
+      
     }; // class DisplayModule
   }; // namespace iCave
   

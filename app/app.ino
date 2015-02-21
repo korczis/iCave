@@ -79,28 +79,15 @@ void printInfo() {
 
 #if ENABLE_SNOOZE
   // Snooze
-  // #include <Snooze.h>
   #include <LowPower_Teensy3.h>
   
-  TEENSY3_LP LP = TEENSY3_LP();
-  
-  void callbackhandler() {
-    digitalWrite(LED_BUILTIN, HIGH);
-    delay(100);
-    digitalWrite(LED_BUILTIN, LOW);
-  }
-  
-  void setupSleepMode() {
-    pinMode(LED_BUILTIN, OUTPUT);
-    pinMode(0, INPUT_PULLUP);
-    attachInterrupt(0, callbackhandler, RISING);
-  }
+  #include "snooze.h"
 #endif // ENABLE_SNOOZE
 
 /**
  * @brief Main setup
  */
-void setup() {
+void setup() {  
   #if ENABLE_SERIAL
     manager.createAndRegisterModule<iCave::SerialModule>();
   #endif // ENABLE_SERIAL
@@ -133,6 +120,11 @@ void setup() {
     manager.createAndRegisterModule<iCave::WifiModule>();
   #endif // WIFI_ENABLED
 
+  #if ENABLE_SNOOZE
+    manager.createAndRegisterModule<iCave::SnoozeModule>();
+    // LP.Sleep();
+  #endif // ENABLE_SNOOZE
+  
   // Setup modules registered in manager
   manager.setup();    
   
@@ -150,54 +142,14 @@ void setup() {
   printInfo();
 }
 
-unsigned long last_delta = 0;
-
 /**
  * @brief Main loop
  */
 unsigned int tickNo = 0;
 
 void loop(void) {
-  const int tick_start = millis();
-  
   // Loop modules registered in manager
   manager.loop();  
-
-  // testDisplay();
-  
-  #if ENABLE_DISPLAY && ENABLE_DISPLAY_TEST_LOOP
-    for(uint8_t rotation = 0; rotation < 4; rotation++) {
-      tft.setRotation(rotation);
-      testDisplay();
-      delay(2000);
-    }    
-  #endif // ENABLE_DISPLAY  
- 
-  if(LOOP_TYPE == LT_FIXED_SLEEP) {
-    // Sleep for some time, if needed
-    delay(LOOP_INTERVAL);
-  } // LT_FIXED_SLEEP
-
-  if(LOOP_TYPE == LT_FIXED_FPS) {
-    static const int LOOP_SLEEP_TIME = ((1.0f / LOOP_FPS) * 1000);
-    const int tick_loop = millis() - tick_start; // TODO: Review this
-    const int sleep_time = (LOOP_SLEEP_TIME - tick_loop);
-
-    if(sleep_time > 0) {
-      char buffer[128];
-      sprintf(buffer, "loop() - sleep_time == %d", sleep_time);
-      Serial.println(buffer);
-    
-      delay(sleep_time >= 0 ? sleep_time : 1);
-    }
-  } // LT_FIXED_FPS
-
-  #if ENABLE_SNOOZE
-    LP.Sleep();
-  #endif // ENABLE_SNOOZE
-
-  // Measure tick time
-  last_delta = millis() - tick_start;
   
   tickNo++;
 }

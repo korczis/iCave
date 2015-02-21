@@ -17,13 +17,13 @@
   #define ENABLE_DISPLAY_TEST_LOOP (0)
   
   #define ENABLE_SERIAL (1)
-  #define ENABLE_EEPROM(1)
+  #define ENABLE_EEPROM (1)
   #define ENABLE_GPS (1)
-  #define ENABLE_SD_CARD (1)
+  #define ENABLE_SD_CARD (0)
   #define ENABLE_TSL_2561 (1)
-  #define ENABLE_SNOOZE (1)
+  #define ENABLE_SNOOZE (0) // Problematic
   #define ENABLE_DHT (1)
-  #define ENABLE_WIFI (1)
+  #define ENABLE_WIFI (0) // Problematic
  
   #define DISPLAY_STATS (1)
   
@@ -38,7 +38,7 @@
   E_LOOP_TYPE;
   
   // Global configuration
-  #define LOOP_TYPE (LT_FIXED_SLEEP)
+  #define LOOP_TYPE (LT_FIXED_FPS)
   #define LOOP_INTERVAL (16)
   #define LOOP_FPS (30.0f)
 

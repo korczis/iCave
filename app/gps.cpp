@@ -1,9 +1,9 @@
-#include "./display.h"
-#include "./gps.h"
-#include "./general.h"
-#include "./eeprom.h"
-#include "./dht.h"
-#include "./tsl_2561.h"
+#include "display.h"
+#include "gps.h"
+#include "general.h"
+#include "eeprom.h"
+#include "dht.h"
+#include "tsl_2561.h"
 
 using namespace iCave;
 
@@ -15,7 +15,8 @@ using namespace iCave;
 Adafruit_GPS GPS(&Serial1);
 
 extern int getFreeRam(void);
-extern unsigned long last_delta;
+extern unsigned long last_tick;
+extern float fps;
 
 // this keeps track of whether we're using the interrupt
 // off by default!
@@ -138,9 +139,7 @@ void GpsModule::updateDisplay() {
     tft.println(buff);
     
     //*
-    float last_delta_s = last_delta * 0.001f;
-    
-    sprintf(buff, "Tick: %0.4f, FPS: %0.2f",last_delta_s, 1 / last_delta_s);
+    sprintf(buff, "Tick: %0.4f, FPS: %0.2f", last_tick_diff, fps);
     tft.println(buff);
     //*/
       
