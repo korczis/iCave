@@ -4,7 +4,7 @@ Your Cave's Web Interface
 
 # Hardware
 
-- [Teensy 3.1](https://www.pjrc.com/teensy/teensy31.html)
+- [Teensy 3.1](https://www.pjrc.com/teensy/teensy31.html) (~ $20)
   
   Teensy 3.1 is a small, breadboard-friendly development which brings a low-cost 32 bit ARM Cortex-M4 platform to hobbyists, students and engineers, using an adapted version of the Arduino IDE.
 
@@ -19,7 +19,7 @@ Your Cave's Web Interface
   - USB / Serial / SPI / I2C / CAN / I2S
   - 5V tolerant digital inputs
 
-- [DHT22](https://www.adafruit.com/product/393)
+- [DHT22](https://www.adafruit.com/product/393) (~ $15)
 
   Basic, low-cost digital temperature and humidity sensor. It uses a capacitive humidity sensor and a thermistor to measure the surrounding air, and spits out a digital signal on the data pin.
   
@@ -29,7 +29,7 @@ Your Cave's Web Interface
   - 0-100% humidity readings with 2-5% accuracy
   - -40 to 80°C temperature readings ±0.5°C accuracy
   
-- [GPS](https://www.adafruit.com/products/746)
+- [GPS](https://www.adafruit.com/products/746) (~ $40)
 
   High-quality GPS module that can track up to 22 satellites on 66 channels and has an excellent high-sensitivity receiver.
   
@@ -44,7 +44,7 @@ Your Cave's Web Interface
   - u.FL connector for external active antenna
   - Fix status LED
 
-- [TSL2561](https://www.adafruit.com/products/439)
+- [TSL2561](https://www.adafruit.com/products/439) (~ $6)
 
   The TSL2561 luminosity sensor is an advanced digital light sensor
   
@@ -56,7 +56,7 @@ Your Cave's Web Interface
   - Interface: I2C
   - I2C 7-bit addresses 0x39, 0x29, 0x49, selectable with jumpers
   
-- [Wifi CC3000](https://www.adafruit.com/products/1469) 
+- [Wifi CC3000](https://www.adafruit.com/products/1469) (~ $35)
 
   - Microcontroller-friendly WiFi module
   - 802.11b/g
