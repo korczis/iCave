@@ -2,6 +2,8 @@
 
 Your Cave's Web Interface
 
+![Display Image](https://raw.githubusercontent.com/korczis/iCave/master/imgs/display.jpg)
+
 # Hardware
 
 - [Teensy 3.1](https://www.pjrc.com/teensy/teensy31.html) (~ $20)
