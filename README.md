@@ -19,7 +19,9 @@ Your Cave's Web Interface
   - DAC: 12 bits
   - USB / Serial / SPI / I2C / CAN / I2S
   - 5V tolerant digital inputs
+
 - [Wifi CC3000](https://www.adafruit.com/products/1469) 
+
   - Microcontroller-friendly WiFi module
   - 802.11b/g
   - Open/WEP/WPA/WPA2 security,
