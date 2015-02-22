@@ -10,6 +10,10 @@ Your Cave's Web Interface
 
 ![Display Image](https://raw.githubusercontent.com/korczis/iCave/master/imgs/display_low.jpg)
 
+## Prerequisites
+
+- [ArduinoJson](https://github.com/bblanchon/ArduinoJson)
+
 ## Getting started
 
 Clone git sources ...
