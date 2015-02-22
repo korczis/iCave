@@ -2,6 +2,11 @@
 
 Your Cave's Web Interface
 
+## Preview
+
+![Display Image](https://raw.githubusercontent.com/korczis/iCave/master/imgs/display_low.jpg)
+
+
 ## Features
 
 - Temperature measurement
@@ -21,10 +26,6 @@ Your Cave's Web Interface
 ## Repository structure
 
 - [Application Structure](https://github.com/korczis/iCave/blob/master/app/README.md)
-
-## Images
-
-![Display Image](https://raw.githubusercontent.com/korczis/iCave/master/imgs/display_low.jpg)
 
 ## Prerequisites
 
