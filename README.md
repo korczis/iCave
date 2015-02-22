@@ -12,7 +12,11 @@ Your Cave's Web Interface
 
 ## Prerequisites
 
+Not everything is needed, see [configuration file](https://github.com/korczis/iCave/blob/master/app/general.h).
+
 ### Libraries
+
+Not everything is needed, see [configuration file](https://github.com/korczis/iCave/blob/master/app/general.h).
 
 - [ArduinoJson](https://github.com/bblanchon/ArduinoJson)
 
@@ -43,6 +47,8 @@ Your Cave's Web Interface
   *Low Power Teensy 3.x library.*
   
 ### Hardware
+
+Not everything is needed, see [configuration file](https://github.com/korczis/iCave/blob/master/app/general.h).
 
 - [Teensy 3.1](https://www.pjrc.com/teensy/teensy31.html) (~ $20)
   
