@@ -2,9 +2,25 @@
 
 Your Cave's Web Interface
 
-## Structure
+## Features
 
-- [Software Structure](https://github.com/korczis/iCave/blob/master/app/README.md)
+- Temperature measurement
+- Humidity measurement
+- GPS
+  - Location 
+  - Speed
+  - Altitude
+- Luminosity
+- TFT Display UI
+- Serial Output
+- Power
+  - USB
+  - Battery
+  - Laboratory voltage source
+ 
+## Repository structure
+
+- [Application Structure](https://github.com/korczis/iCave/blob/master/app/README.md)
 
 ## Images
 
