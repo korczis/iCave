@@ -110,6 +110,10 @@ void setup() {
     iCave::GpsModule* gpsModule = manager->createAndRegisterModule<iCave::GpsModule>();
   #endif // ENABLE_GPS
 
+  #if ENABLE_SD_CARD
+    iCave::SdCardModule* sdCardModule = manager->createAndRegisterModule<iCave::SdCardModule>();
+  #endif // ENABLE_SD_CARD
+  
   #if ENABLE_TSL_2561
     iCave::Tsl2561Module* tsl2561Module = manager->createAndRegisterModule<iCave::Tsl2561Module>();
   #endif // ENABLE_TSL_2561
@@ -122,10 +126,6 @@ void setup() {
   #if ENABLE_SNOOZE
     iCave::SnoozeModule* snoozeModule = manager->createAndRegisterModule<iCave::SnoozeModule>();
   #endif // ENABLE_SNOOZE
-  
-  #if ENABLE_SD_CARD
-    iCave::SdCardModule* sdCardModule = manager->createAndRegisterModule<iCave::SdCardModule>();
-  #endif // ENABLE_SD_CARD
   
   // Setup modules registered in manager
   manager->setup();    
