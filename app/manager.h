@@ -72,7 +72,7 @@ namespace iCave {
     /**
      * @brief Get registered module by its name
      * NOTE: This implementation is quite naiive now
-     * TODO: Use some kind caching for lookup - hash map, etc
+     * TODO: Use some kind of caching for lookup - hash map, etc
      */
     template<typename T>
     inline T* getModule(const char* name) {
