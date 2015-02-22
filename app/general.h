@@ -16,6 +16,26 @@
   unsigned int getVersionPatch();
   
   /**
+   * Loop/Tick types
+   */
+  typedef enum E_LOOP_TYPE {
+    LT_UNKNOWN = -1,
+    LT_FIXED_SLEEP,
+    LT_FIXED_FPS,
+  
+    // Last marker
+    LT_LAST
+  } 
+  E_LOOP_TYPE;
+  
+  /**
+   * Loop/Tick settings
+   */
+  #define LOOP_TYPE (LT_FIXED_FPS)
+  #define LOOP_INTERVAL (16)
+  #define LOOP_FPS (20.0f)
+  
+  /**
    *  JSON Support
    */
   #define JSON_SUPPORT (1)
@@ -72,10 +92,11 @@
    */
   #define ENABLE_SERIAL (1)
   #define SERIAL (1)
-  #define SERIAL_WAIT (1) // Wait for Arduino IDE "Serial Monitor to get connected"
+  #define SERIAL_WAIT (0) // Wait for Arduino IDE "Serial Monitor to get connected"
   
   /** 
    * SD Card
+   * NOTE: If you set this to '0' you must disconnect SD Adapter from SPI
    */
   #define ENABLE_SD_CARD (1)
   
@@ -95,26 +116,6 @@
    * NOTE: Problematic, needs SPI review
    */
   #define ENABLE_WIFI (0)
-  
-  /**
-   * Loop/Tick types
-   */
-  typedef enum E_LOOP_TYPE {
-    LT_UNKNOWN = -1,
-    LT_FIXED_SLEEP,
-    LT_FIXED_FPS,
-  
-    // Last marker
-    LT_LAST
-  } 
-  E_LOOP_TYPE;
-  
-  /**
-   * Loop/Tick settings
-   */
-  #define LOOP_TYPE (LT_FIXED_FPS)
-  #define LOOP_INTERVAL (16)
-  #define LOOP_FPS (20.0f)
   
   unsigned int getTotalRam();
  
