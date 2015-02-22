@@ -8,7 +8,7 @@ Your Cave's Web Interface
 
 ## Images
 
-![Display Image](https://raw.githubusercontent.com/korczis/iCave/master/imgs/display.jpg)
+![Display Image](https://raw.githubusercontent.com/korczis/iCave/master/imgs/display_low.jpg)
 
 ## Getting started
 
