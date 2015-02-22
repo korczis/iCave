@@ -96,10 +96,6 @@ void setup() {
     iCave::EepromModule* eepromModule = manager->createAndRegisterModule<iCave::EepromModule>();
   #endif // ENABLE_EEPROM
   
-  #if ENABLE_SD_CARD
-    iCave::SdCardModule* sdCardModule = manager->createAndRegisterModule<iCave::SdCardModule>();
-  #endif // ENABLE_SD_CARD 
-  
   // Alphabetically 
   
   #if ENABLE_DHT
@@ -126,6 +122,10 @@ void setup() {
   #if ENABLE_SNOOZE
     iCave::SnoozeModule* snoozeModule = manager->createAndRegisterModule<iCave::SnoozeModule>();
   #endif // ENABLE_SNOOZE
+  
+  #if ENABLE_SD_CARD
+    iCave::SdCardModule* sdCardModule = manager->createAndRegisterModule<iCave::SdCardModule>();
+  #endif // ENABLE_SD_CARD
   
   // Setup modules registered in manager
   manager->setup();    
