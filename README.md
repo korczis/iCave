@@ -34,6 +34,10 @@ Your Cave's Web Interface
 
   *Library for the TSL2561 digital luminosity (light) sensors.*
   
+- [Snooze](https://github.com/duff2013/Snooze)
+
+  *Low Power Teensy 3.x library.*
+  
 ### Hardware
 
 - [Teensy 3.1](https://www.pjrc.com/teensy/teensy31.html) (~ $20)
