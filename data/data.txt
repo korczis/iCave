@@ -1,0 +1,168 @@
+{
+  "loop_type": 1,
+  "tick_no": 13634,
+  "tick_start": 1414072,
+  "loop_tick_time": 0.00,
+  "last_tick_diff": 0.05,
+  "fps": 20.00
+}
+{
+  "loop_type": 1,
+  "tick_no": 13635,
+  "tick_start": 1414137,
+  "loop_tick_time": 0.00,
+  "last_tick_diff": 0.05,
+  "fps": 20.00
+}
+{
+  "loop_type": 1,
+  "tick_no": 13636,
+  "tick_start": 1414196,
+  "loop_tick_time": 0.00,
+  "last_tick_diff": 0.05,
+  "fps": 20.00
+}
+{
+  "loop_type": 1,
+  "tick_no": 13637,
+  "tick_start": 1414258,
+  "loop_tick_time": 0.00,
+  "last_tick_diff": 0.05,
+  "fps": 20.00
+}
+{
+  "loop_type": 1,
+  "tick_no": 13638,
+  "tick_start": 1414398,
+  "loop_tick_time": 0.00,
+  "last_tick_diff": 0.05,
+  "fps": 20.00
+}
+{
+  "loop_type": 1,
+  "tick_no": 13639,
+  "tick_start": 1414457,
+  "loop_tick_time": 0.00,
+  "last_tick_diff": 0.05,
+  "fps": 20.00
+}
+{
+  "loop_type": 1,
+  "tick_no": 13640,
+  "tick_start": 1414519,
+  "loop_tick_time": 0.12,
+  "last_tick_diff": 0.12,
+  "fps": 8.33
+}
+{
+  "loop_type": 1,
+  "tick_no": 13641,
+  "tick_start": 1414657,
+  "loop_tick_time": 0.00,
+  "last_tick_diff": 0.05,
+  "fps": 20.00
+}
+{
+  "loop_type": 1,
+  "tick_no": 13642,
+  "tick_start": 1414798,
+  "loop_tick_time": 0.00,
+  "last_tick_diff": 0.05,
+  "fps": 20.00
+}
+{
+  "loop_type": 1,
+  "tick_no": 13643,
+  "tick_start": 1414857,
+  "loop_tick_time": 0.00,
+  "last_tick_diff": 0.05,
+  "fps": 20.00
+}
+{
+  "loop_type": 1,
+  "tick_no": 13644,
+  "tick_start": 1414926,
+  "loop_tick_time": 0.00,
+  "last_tick_diff": 0.05,
+  "fps": 20.00
+}
+{
+  "loop_type": 1,
+  "tick_no": 13645,
+  "tick_start": 1415064,
+  "loop_tick_time": 0.00,
+  "last_tick_diff": 0.05,
+  "fps": 20.00
+}
+{
+  "loop_type": 1,
+  "tick_no": 13646,
+  "tick_start": 1415123,
+  "loop_tick_time": 0.00,
+  "last_tick_diff": 0.05,
+  "fps": 20.00
+}
+{
+  "loop_type": 1,
+  "tick_no": 13647,
+  "tick_start": 1415183,
+  "loop_tick_time": 0.00,
+  "last_tick_diff": 0.05,
+  "fps": 20.00
+}
+{
+  "loop_type": 1,
+  "tick_no": 13648,
+  "tick_start": 1415245,
+  "loop_tick_time": 0.00,
+  "last_tick_diff": 0.05,
+  "fps": 20.00
+}
+{
+  "loop_type": 1,
+  "tick_no": 13649,
+  "tick_start": 1415384,
+  "loop_tick_time": 0.00,
+  "last_tick_diff": 0.05,
+  "fps": 20.00
+}
+{
+  "loop_type": 1,
+  "tick_no": 13650,
+  "tick_start": 1415443,
+  "loop_tick_time": 0.39,
+  "last_tick_diff": 0.39,
+  "fps": 2.56
+}
+{
+  "loop_type": 1,
+  "tick_no": 13651,
+  "tick_start": 1415847,
+  "loop_tick_time": 0.00,
+  "last_tick_diff": 0.05,
+  "fps": 20.00
+}
+{
+  "loop_type": 1,
+  "tick_no": 13652,
+  "tick_start": 1415989,
+  "loop_tick_time": 0.00,
+  "last_tick_diff": 0.05,
+  "fps": 20.00
+}
+{
+  "loop_type": 1,
+  "tick_no": 13653,
+  "tick_start": 1416049,
+  "loop_tick_time": 0.00,
+  "last_tick_diff": 0.05,
+  "fps": 20.00
+}
+{
+  "loop_type": 1,
+  "tick_no": 13654,
+  "tick_start": 1416114,
+  "loop_tick_time": 0.00,
+  "last_tick_diff": 0.05,
+  "fps": 20.00
+}

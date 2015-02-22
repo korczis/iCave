@@ -2,15 +2,17 @@
 
 Web Interface for your Cave.
 
-*This is proof of concept, there is many things [to do](https://github.com/korczis/iCave/blob/master/TODO.md).*
+*This is proof of concept, there is many things [To Do (TODO.md)](https://github.com/korczis/iCave/blob/master/TODO.md).*
+
+See [Changelog (CHANGELOG.md)](https://github.com/korczis/iCave/blob/master/CHANGELOG.md) for info about last changes.
 
 ## Preview
 
 ![Display Image](https://raw.githubusercontent.com/korczis/iCave/master/imgs/display_low.jpg)
 
-
 ## Features
 
+- Logging data to SD Card (See [iCave::Manager::loop()](https://github.com/korczis/iCave/blob/master/app/manager.cpp), [sample data](https://github.com/korczis/iCave/blob/master/data/data.txt))
 - Temperature measurement
 - Humidity measurement
 - GPS
