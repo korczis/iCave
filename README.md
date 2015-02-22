@@ -26,6 +26,14 @@ Your Cave's Web Interface
 
   *A hyper fast SPI driver for Ilitek ILI9340 TFT 2.2" displays Features: - Very FAST!, expecially with Teensy 3.x where uses native SPI.*
   
+- [Adafruit CC3000](https://github.com/adafruit/Adafruit_CC3000_Library)
+
+  *Library for the Adafruit CC3000 WiFi Breakouts etc.*
+  
+- [TSL2561](https://github.com/adafruit/TSL2561-Arduino-Library)
+
+  *Library for the TSL2561 digital luminosity (light) sensors.*
+  
 ### Hardware
 
 - [Teensy 3.1](https://www.pjrc.com/teensy/teensy31.html) (~ $20)
