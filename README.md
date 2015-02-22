@@ -117,7 +117,7 @@ Your Cave's Web Interface
 
   RFID sensor
   
-  ## Getting started
+## Getting started
 
 Clone git sources ...
 
