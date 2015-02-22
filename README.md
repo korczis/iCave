@@ -1,6 +1,8 @@
 # iCave
 
-Your Cave's Web Interface
+Web Interface for your Cave.
+
+*This is proof of concept, there is many things [to do](https://github.com/korczis/iCave/blob/master/TODO.md).*
 
 ## Preview
 
