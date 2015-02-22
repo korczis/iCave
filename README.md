@@ -4,7 +4,7 @@ Web Interface for your Cave.
 
 *This is proof of concept, there is many things [To Do (TODO.md)](https://github.com/korczis/iCave/blob/master/TODO.md).*
 
-See [Changelog (CHANGELOG.md)](https://github.com/korczis/iCave/blob/master/CHANGELOG.md) for info about last changes.
+See [Changelog (CHANGELOG.md)](https://github.com/korczis/iCave/blob/master/CHANGELOG.md) for info about latest changes.
 
 ## Preview
 
