@@ -11,6 +11,7 @@ Web Interface for your Cave.
 
 ## Features
 
+- Logging data to SD Card [See [sample data](https://github.com/korczis/iCave/blob/master/data/data.txt)]
 - Temperature measurement
 - Humidity measurement
 - GPS
