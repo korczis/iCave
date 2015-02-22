@@ -4,8 +4,7 @@
 - Memory management
   - Allocators
     - Use more of "[C++ placement new](http://en.wikipedia.org/wiki/Placement_syntax)"
-    - Fixed
-    - 
+    - Fixed size pool
 - Logger
 - Profiler
 - SD Card support
