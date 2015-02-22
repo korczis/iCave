@@ -10,6 +10,6 @@
 - Profiler
 - SD Card support
   - [x] Logging
-  - Profiling
+  - Profiler storage
   - Settings load
   - Settings store
