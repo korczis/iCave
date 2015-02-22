@@ -8,21 +8,51 @@ Your Cave's Web Interface
 
 ## Images
 
-![Display Image](https://raw.githubusercontent.com/korczis/iCave/master/imgs/display.jpg)
+![Display Image](https://raw.githubusercontent.com/korczis/iCave/master/imgs/display_low.jpg)
 
-## Getting started
+## Prerequisites
 
-Clone git sources ...
+Not everything is needed, see [configuration file](https://github.com/korczis/iCave/blob/master/app/general.h).
 
-```
-git clone https://github.com/korczis/iCave.git
-```
+### Libraries
 
-## Hardware
+Not everything is needed, see [configuration file](https://github.com/korczis/iCave/blob/master/app/general.h).
+
+- [Adafruit CC3000](https://github.com/adafruit/Adafruit_CC3000_Library)
+
+  *Library for the Adafruit CC3000 WiFi Breakouts etc.*
+  
+- [Adafruit GFX](https://github.com/adafruit/Adafruit-GFX-Library)
+
+  *Graphics library for all our displays, providing a common set of graphics primitives (points, lines, circles, etc.)*
+  
+- [ArduinoJson](https://github.com/bblanchon/ArduinoJson)
+
+  *An elegant and efficient JSON library for embedded systems.*
+
+- [RC522](https://github.com/miguelbalboa/rfid)
+
+  *Arduino library for MFRC522 and other RFID RC522 based modules.*
+  
+- [Snooze](https://github.com/duff2013/Snooze)
+
+  *Low Power Teensy 3.x library.*
+  
+- [TFT_ILI9340](https://github.com/sumotoy/TFT_ILI9340)
+
+  *A hyper fast SPI driver for Ilitek ILI9340 TFT 2.2" displays Features: - Very FAST!, expecially with Teensy 3.x where uses native SPI.*
+  
+- [TSL2561](https://github.com/adafruit/TSL2561-Arduino-Library)
+
+  *Library for the TSL2561 digital luminosity (light) sensors.*
+  
+### Hardware
+
+Not everything is needed, see [configuration file](https://github.com/korczis/iCave/blob/master/app/general.h).
 
 - [Teensy 3.1](https://www.pjrc.com/teensy/teensy31.html) (~ $20)
   
-  Teensy 3.1 is a small, breadboard-friendly development which brings a low-cost 32 bit ARM Cortex-M4 platform to hobbyists, students and engineers, using an adapted version of the Arduino IDE.
+  *Teensy 3.1 is a small, breadboard-friendly development which brings a low-cost 32 bit ARM Cortex-M4 platform to hobbyists, students and engineers, using an adapted version of the Arduino IDE.*
 
   - Processor: MK20DX256VLH7 
   - Core: Cortex-M4
@@ -37,7 +67,7 @@ git clone https://github.com/korczis/iCave.git
 
 - [ST7735R](https://www.adafruit.com/product/358) (~ $20)
 
-  Display that uses 4-wire SPI to communicate and has its own pixel-addressable frame buffer, it can be used with every kind of microcontroller.
+  *Display that uses 4-wire SPI to communicate and has its own pixel-addressable frame buffer, it can be used with every kind of microcontroller.*
   
   - 1.8" diagonal LCD TFT display
   - 128x160 resolution, 18-bit (262,144) color
@@ -53,7 +83,7 @@ git clone https://github.com/korczis/iCave.git
 
 - [DHT22](https://www.adafruit.com/product/393) (~ $15)
 
-  Basic, low-cost digital temperature and humidity sensor. It uses a capacitive humidity sensor and a thermistor to measure the surrounding air, and spits out a digital signal on the data pin.
+  *Basic, low-cost digital temperature and humidity sensor. It uses a capacitive humidity sensor and a thermistor to measure the surrounding air, and spits out a digital signal on the data pin.*
   
   - Low cost
   - 3 to 5V power and I/O
@@ -63,7 +93,7 @@ git clone https://github.com/korczis/iCave.git
   
 - [GPS](https://www.adafruit.com/products/746) (~ $40)
 
-  High-quality GPS module that can track up to 22 satellites on 66 channels and has an excellent high-sensitivity receiver.
+  *High-quality GPS module that can track up to 22 satellites on 66 channels and has an excellent high-sensitivity receiver.*
   
   - 165 dBm sensitivity, 10 Hz updates, 66 channels
   - 5V friendly design
@@ -78,7 +108,7 @@ git clone https://github.com/korczis/iCave.git
 
 - [TSL2561](https://www.adafruit.com/products/439) (~ $6)
 
-  The TSL2561 luminosity sensor is an advanced digital light sensor
+  *The TSL2561 luminosity sensor is an advanced digital light sensor.*
   
   - Approximates Human eye Response
   - Precisely Measures Illuminance in Diverse Lighting Conditions
@@ -90,7 +120,7 @@ git clone https://github.com/korczis/iCave.git
   
 - [Wifi CC3000](https://www.adafruit.com/products/1469) (~ $35)
 
-  Microcontroller-friendly WiFi module
+  *Microcontroller-friendly WiFi module.*
   
   - 802.11b/g
   - Open/WEP/WPA/WPA2 security,
@@ -100,13 +130,19 @@ git clone https://github.com/korczis/iCave.git
 
 - [nRF24L01](http://playground.arduino.cc/InterfacingWithHardware/Nrf24L01) (~ $1-5)
 
-  Radio/Wireless Transceiver
+  *Radio/Wireless Transceiver.*
 
   - 2.4GHz RF
   - [How To](http://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo)
 
 - [RFID-RC522](http://devsketches.blogspot.cz/2014/05/rfid-sensor-funduino-rfid-rc522.html) (~ $6)
 
-  RFID sensor
+  *RFID sensor.*
   
-  
+## Getting started
+
+Clone git sources ...
+
+```
+git clone https://github.com/korczis/iCave.git
+```
