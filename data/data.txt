@@ -1,0 +1,32 @@
+{
+  "loop_type": 1,
+  "tick_no": 13634,
+  "tick_start": 1414072,
+  "loop_tick_time": 0.00,
+  "last_tick_diff": 0.05,
+  "fps": 20.00
+}
+{
+  "loop_type": 1,
+  "tick_no": 13635,
+  "tick_start": 1414137,
+  "loop_tick_time": 0.00,
+  "last_tick_diff": 0.05,
+  "fps": 20.00
+}
+{
+  "loop_type": 1,
+  "tick_no": 13636,
+  "tick_start": 1414196,
+  "loop_tick_time": 0.00,
+  "last_tick_diff": 0.05,
+  "fps": 20.00
+}
+{
+  "loop_type": 1,
+  "tick_no": 13637,
+  "tick_start": 1414258,
+  "loop_tick_time": 0.00,
+  "last_tick_diff": 0.05,
+  "fps": 20.00
+}
