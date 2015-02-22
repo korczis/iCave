@@ -147,10 +147,6 @@ void GpsModule::updateDisplay() {
     sprintf(buff, "Ver: %d.%d.%d, Run: #%d", getVersionMajor(), getVersionMinor(), getVersionPatch(), persistenceInfo.bootNo);
     tft.println(buff);
   #endif // DISPLAY_STATS
-  
-  // tft.setTextColor(ILI9340_RED, ILI9340_BLACK);
-  // tft.setTextSize(3);
-  // tft.println("\nMarianka");
 }
 
 uint32_t timer = millis();
@@ -180,8 +176,10 @@ void GpsModule::loop() {
     // so be very wary if using OUTPUT_ALLDATA and trytng to print out data
     //Serial.println(GPS.lastNMEA());   // this also sets the newNMEAreceived() flag to false
 
-    if (!GPS.parse(GPS.lastNMEA()))   // this also sets the newNMEAreceived() flag to false
+    // this also sets the newNMEAreceived() flag to false
+    if (!GPS.parse(GPS.lastNMEA())) {
       return;  // we can fail to parse a sentence in which case we should just wait for another
+    }
   }
 
   // if millis() or timer wraps around, we'll just reset it

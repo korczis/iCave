@@ -2,6 +2,8 @@
 #define ICAVE_MANAGER_H
 
 #include <vector>
+#include <map>
+#include <string>
 
 extern unsigned long last_tick;
 
@@ -34,6 +36,7 @@ namespace iCave {
     
   private:
     std::vector<Module*> mModules;
+    
   }; // class Manager
 }; // namespace iCave
 

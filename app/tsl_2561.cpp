@@ -28,13 +28,13 @@ void Tsl2561Module::setup() {
   
   // You can change the gain on the fly, to adapt to brighter/dimmer light situations
   tsl.setGain(TSL2561_GAIN_0X);         // set no gain (for bright situtations)
-  //tsl.setGain(TSL2561_GAIN_16X);      // set 16x gain (for dim situations)
+  // tsl.setGain(TSL2561_GAIN_16X);      // set 16x gain (for dim situations)
   
   // Changing the integration time gives you a longer time over which to sense light
   // longer timelines are slower, but are good in very low light situtations!
   tsl.setTiming(TSL2561_INTEGRATIONTIME_13MS);  // shortest integration time (bright light)
-  //tsl.setTiming(TSL2561_INTEGRATIONTIME_101MS);  // medium integration time (medium light)
-  //tsl.setTiming(TSL2561_INTEGRATIONTIME_402MS);  // longest integration time (dim light)
+  // tsl.setTiming(TSL2561_INTEGRATIONTIME_101MS);  // medium integration time (medium light)
+  // tsl.setTiming(TSL2561_INTEGRATIONTIME_402MS);  // longest integration time (dim light)
   
   // Now we're ready to get readings!
 }
