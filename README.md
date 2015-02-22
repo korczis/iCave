@@ -14,6 +14,16 @@ Your Cave's Web Interface
 
 - [ArduinoJson](https://github.com/bblanchon/ArduinoJson)
 
+  *An elegant and efficient JSON library for embedded systems.*
+  
+- [Adafruit GFX](https://github.com/adafruit/Adafruit-GFX-Library)
+
+  *Graphics library for all our displays, providing a common set of graphics primitives (points, lines, circles, etc.)*
+  
+- [TFT_ILI9340](https://github.com/sumotoy/TFT_ILI9340)
+
+  *A hyper fast SPI driver for Ilitek ILI9340 TFT 2.2" displays Features: - Very FAST!, expecially with Teensy 3.x where uses native SPI.*
+  
 ## Getting started
 
 Clone git sources ...
