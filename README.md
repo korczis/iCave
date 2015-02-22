@@ -34,6 +34,10 @@ Your Cave's Web Interface
 
   *Library for the TSL2561 digital luminosity (light) sensors.*
   
+- [RC522](https://github.com/miguelbalboa/rfid)
+
+  *Arduino library for MFRC522 and other RFID RC522 based modules.*
+  
 - [Snooze](https://github.com/duff2013/Snooze)
 
   *Low Power Teensy 3.x library.*
