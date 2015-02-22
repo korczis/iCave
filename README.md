@@ -12,6 +12,8 @@ Your Cave's Web Interface
 
 ## Prerequisites
 
+### Libraries
+
 - [ArduinoJson](https://github.com/bblanchon/ArduinoJson)
 
   *An elegant and efficient JSON library for embedded systems.*
@@ -24,15 +26,7 @@ Your Cave's Web Interface
 
   *A hyper fast SPI driver for Ilitek ILI9340 TFT 2.2" displays Features: - Very FAST!, expecially with Teensy 3.x where uses native SPI.*
   
-## Getting started
-
-Clone git sources ...
-
-```
-git clone https://github.com/korczis/iCave.git
-```
-
-## Hardware
+### Hardware
 
 - [Teensy 3.1](https://www.pjrc.com/teensy/teensy31.html) (~ $20)
   
@@ -123,4 +117,10 @@ git clone https://github.com/korczis/iCave.git
 
   RFID sensor
   
-  
+  ## Getting started
+
+Clone git sources ...
+
+```
+git clone https://github.com/korczis/iCave.git
+```
