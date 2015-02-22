@@ -27,9 +27,12 @@ See [Changelog (CHANGELOG.md)](https://github.com/korczis/iCave/blob/master/CHAN
   - Battery
   - Laboratory voltage source
  
-## Repository structure
+## Structure
 
-- [Application Structure](https://github.com/korczis/iCave/blob/master/app/README.md)
+- [app](https://github.com/korczis/iCave/blob/master/app)
+- [CHANGELOG.md](https://github.com/korczis/iCave/blob/master/CHANGELOG.md)
+- [README.md](https://github.com/korczis/iCave/blob/master/README.md)
+- [TODO.md](https://github.com/korczis/iCave/blob/master/TODO.md)
 
 ## Prerequisites
 
