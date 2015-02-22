@@ -2,7 +2,7 @@
 
 Web Interface for your Cave.
 
-*This is proof of concept, there is many things [to do](https://github.com/korczis/iCave/blob/master/TODO.md).*
+*This is proof of concept, there is many things [To Do](https://github.com/korczis/iCave/blob/master/TODO.md).*
 
 ## Preview
 
