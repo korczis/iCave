@@ -18,26 +18,18 @@ Not everything is needed, see [configuration file](https://github.com/korczis/iC
 
 Not everything is needed, see [configuration file](https://github.com/korczis/iCave/blob/master/app/general.h).
 
-- [ArduinoJson](https://github.com/bblanchon/ArduinoJson)
+- [Adafruit CC3000](https://github.com/adafruit/Adafruit_CC3000_Library)
 
-  *An elegant and efficient JSON library for embedded systems.*
+  *Library for the Adafruit CC3000 WiFi Breakouts etc.*
   
 - [Adafruit GFX](https://github.com/adafruit/Adafruit-GFX-Library)
 
   *Graphics library for all our displays, providing a common set of graphics primitives (points, lines, circles, etc.)*
   
-- [TFT_ILI9340](https://github.com/sumotoy/TFT_ILI9340)
+- [ArduinoJson](https://github.com/bblanchon/ArduinoJson)
 
-  *A hyper fast SPI driver for Ilitek ILI9340 TFT 2.2" displays Features: - Very FAST!, expecially with Teensy 3.x where uses native SPI.*
-  
-- [Adafruit CC3000](https://github.com/adafruit/Adafruit_CC3000_Library)
+  *An elegant and efficient JSON library for embedded systems.*
 
-  *Library for the Adafruit CC3000 WiFi Breakouts etc.*
-  
-- [TSL2561](https://github.com/adafruit/TSL2561-Arduino-Library)
-
-  *Library for the TSL2561 digital luminosity (light) sensors.*
-  
 - [RC522](https://github.com/miguelbalboa/rfid)
 
   *Arduino library for MFRC522 and other RFID RC522 based modules.*
@@ -45,6 +37,14 @@ Not everything is needed, see [configuration file](https://github.com/korczis/iC
 - [Snooze](https://github.com/duff2013/Snooze)
 
   *Low Power Teensy 3.x library.*
+  
+- [TFT_ILI9340](https://github.com/sumotoy/TFT_ILI9340)
+
+  *A hyper fast SPI driver for Ilitek ILI9340 TFT 2.2" displays Features: - Very FAST!, expecially with Teensy 3.x where uses native SPI.*
+  
+- [TSL2561](https://github.com/adafruit/TSL2561-Arduino-Library)
+
+  *Library for the TSL2561 digital luminosity (light) sensors.*
   
 ### Hardware
 
