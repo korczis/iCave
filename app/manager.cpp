@@ -6,16 +6,15 @@
 
 using namespace iCave;
 
+#if JSON_SUPPORT
+  #include <ArduinoJson.h>
+#endif // JSON_SUPPORT
+
 unsigned long last_tick = millis();
 float last_tick_diff = 0;
 float fps = 0;
 
 void Manager::setup() {
-  // Print info about enabled components
-  #if PRINT_ENABLED_MODULES
-    printInfo();
-  #endif // PRINT_ENABLED_MODULES
-  
   for(std::vector<Module*>::iterator i = mModules.begin(); i != mModules.end(); i++) {
     Module* m = (*i);
     if(Serial) {
@@ -24,6 +23,11 @@ void Manager::setup() {
     }
     m->setup();
   }
+  
+  // Print info about enabled components
+  #if PRINT_ENABLED_MODULES
+    printInfo();
+  #endif // PRINT_ENABLED_MODULES
 }
 
 unsigned int tickNo = 0;
@@ -64,25 +68,45 @@ void Manager::loop() {
   fps = 1.0f / last_tick_diff;
   last_tick = tick_start;
   
+  #if JSON_SUPPORT
+    StaticJsonBuffer<2048> jsonBuffer;
+    JsonObject& root = jsonBuffer.createObject();
+    
+    root["tickNo"] = tickNo;
+    root["tick_start"] = tick_start;
+    root["loop_tick_time"] = loop_tick_time;
+    root["last_tick_diff"] = last_tick_diff;
+    root["fps"] = fps;
+    
+    root.prettyPrintTo(Serial);
+    
+    if(Serial) {
+      Serial.println();
+    }
+  #endif // JSON_SUPPORT
+  
   tickNo++;
 }
 
 void Manager::printInfo() {
   if(Serial) {
-    Serial.print("ENABLE_WIFI = ");
-    Serial.println(ENABLE_WIFI);
-
+    Serial.print("ENABLE_DHT = ");
+    Serial.println(ENABLE_DHT);
+    
     Serial.print("ENABLE_DISPLAY = ");
     Serial.println(ENABLE_DISPLAY);
-
+    
     Serial.print("ENABLE_GPS = ");
     Serial.println(ENABLE_GPS);
-
+    
     Serial.print("ENABLE_SD_CARD = ");
     Serial.println(ENABLE_SD_CARD);
 
     Serial.print("ENABLE_TSL_2561 = ");
     Serial.println(ENABLE_TSL_2561);
+    
+    Serial.print("ENABLE_WIFI = ");
+    Serial.println(ENABLE_WIFI);
   }
 }
 
