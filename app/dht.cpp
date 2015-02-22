@@ -1,4 +1,5 @@
 #include "dht.h"
+#include "general.h"
 
 using namespace iCave;
 

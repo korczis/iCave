@@ -1,3 +1,5 @@
+#include <MFRC522.h>
+
 // Core includes
 #include <SPI.h>
 #include <Wire.h>

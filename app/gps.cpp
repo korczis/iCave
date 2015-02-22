@@ -70,66 +70,79 @@ void GpsModule::updateDisplay() {
   
   char buff[128];
   
-  sprintf(buff, "Date: 20%02d/%02d/%02d", GPS.year, GPS.month, GPS.day);
-  tft.println(buff);
+  #if GPS_SHOW_DATE
+    sprintf(buff, "Date: 20%02d/%02d/%02d", GPS.year, GPS.month, GPS.day);
+    tft.println(buff);
+  #endif // GPS_SHOW_DATE
   
-  sprintf(buff, "Time: %02d:%02d:%02d.%02d", GPS.hour, GPS.minute, GPS.seconds, GPS.milliseconds);
-  tft.println(buff);
+  #if GPS_SHOW_TIME
+    sprintf(buff, "Time: %02d:%02d:%02d.%02d", GPS.hour, GPS.minute, GPS.seconds, GPS.milliseconds);
+    tft.println(buff);
+  #endif // GPS_SHOW_TIME
   
-  // Serial.print("Fix: "); 
-  // Serial.print((int)GPS.fix);
-  // Serial.print(" quality: "); 
-  // Serial.println((int)GPS.fixquality); 
+  #if GPS_SHOW_POSITION
+    sprintf(buff, "Loc: %.4f %.4f", GPS.latitude * 0.01, 4, GPS.longitude * 0.01, 4);
+    tft.println(buff);
+  #endif // GPS_SHOW_POSITION
   
-  sprintf(buff, "Loc: %.4f %.4f", GPS.latitude * 0.01, 4, GPS.longitude * 0.01, 4);
-  tft.println(buff);
+  #if GPS_SHOW_SPEED
+    sprintf(buff, "Speed: %.2f", GPS.speed);
+    tft.println(buff);
+  #endif // #if GPS_SHOW_SPEED
   
-  sprintf(buff, "Speed: %.2f", GPS.speed);
-  tft.println(buff);
+  #if GPS_SHOW_ANGLE
+    sprintf(buff, "Angle: %.2f", GPS.angle);
+    tft.println(buff);
+  #endif // GPS_SHOW_ANGLE
   
-  // sprintf(buff, "Angle: %.2f", GPS.angle);
-  // tft.println(buff);
-  
-  sprintf(buff, "Altitude: %.2f", GPS.altitude);
-  tft.println(buff);
+  #if GPS_SHOW_ALTITUDE
+    sprintf(buff, "Altitude: %.2f", GPS.altitude);
+    tft.println(buff);
+  #endif // GPS_SHOW_ALTITUDE
 
-  sprintf(buff, "Fix: %d, Sats: %d", GPS.fix, GPS.satellites);
-  tft.println(buff);  
+  #if GPS_SHOW_FIX
+    sprintf(buff, "Fix: %d, Sats: %d", GPS.fix, GPS.satellites);
+    tft.println(buff);  
+  #endif // GPS_SHOW_FIX
   
   // tft.println();
 
   #if ENABLE_DHT
-    sprintf(buff, "Temperature: %.2f C", dhtTemperature);
-    tft.println(buff);
+    #if DHT_SHOW_TEMPERATURE
+      sprintf(buff, "Temperature: %.2f C", dhtTemperature);
+      tft.println(buff);
+    #endif // DHT_SHOW_TEMPERATURE
     
-    sprintf(buff, "Humidity: %.2f%%", dhtHumidity);
-    tft.println(buff);
+    #if DHT_SHOW_HUMIDITY
+      sprintf(buff, "Humidity: %.2f%%", dhtHumidity);
+      tft.println(buff);
+    #endif // DHT_SHOW_HUMIDITY
     
-    sprintf(buff, "Heat Index: %.2f C", dhtHeatIndex);
-    tft.println(buff);
-    
-    // tft.println();
+    #if DHT_SHOW_HEAT_INDEX
+      sprintf(buff, "Heat Index: %.2f C", dhtHeatIndex);
+      tft.println(buff);
+    #endif // DHT_SHOW_HEAT_INDEX
   #endif // ENABLE_DHT
   
   #if ENABLE_TSL_2561
     sprintf(buff, "Lux: %.2f", lux);
     tft.println(buff);
   #endif // ENABLE_2561
-  
-  unsigned int raw_secs = millis() * 0.001f;
-  
-  const unsigned int rt_days = raw_secs / 86400;
-  raw_secs %= 86400;
-  
-  const unsigned int rt_hours = raw_secs / 3600;
-  raw_secs %= 3600;
-  
-  const unsigned int rt_mins = raw_secs / 60;
-  raw_secs %= 60; 
-  
-  const unsigned int rt_secs = raw_secs;
 
   #if DISPLAY_STATS
+    unsigned int raw_secs = millis() * 0.001f;
+    
+    const unsigned int rt_days = raw_secs / 86400;
+    raw_secs %= 86400;
+    
+    const unsigned int rt_hours = raw_secs / 3600;
+    raw_secs %= 3600;
+    
+    const unsigned int rt_mins = raw_secs / 60;
+    raw_secs %= 60; 
+    
+    const unsigned int rt_secs = raw_secs;
+    
     sprintf(buff, "Uptime: %02dd %02d:%02d:%02d", rt_days, rt_hours, rt_mins, rt_secs);
     tft.println(buff);
   

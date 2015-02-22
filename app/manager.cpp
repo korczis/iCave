@@ -30,7 +30,7 @@ void Manager::setup() {
   #endif // PRINT_ENABLED_MODULES
 }
 
-unsigned int tickNo = 0;
+unsigned long tick_no = 0;
 
 void Manager::loop() {
   const int tick_start = millis();
@@ -38,7 +38,7 @@ void Manager::loop() {
   // Serial.print("Manager::loop() - tick #");
   // Serial.println(tickNo);
   
-  if(SENSOR_UPDATE_TICKS == 0 || (tickNo % SENSOR_UPDATE_TICKS) == 0) {
+  if(SENSOR_UPDATE_TICKS == 0 || (tick_no % SENSOR_UPDATE_TICKS) == 0) {
     for(std::vector<Module*>::iterator i = mModules.begin(); i != mModules.end(); i++) {
       (*i)->loop();
     }
@@ -68,13 +68,14 @@ void Manager::loop() {
   fps = 1.0f / last_tick_diff;
   last_tick = tick_start;
   
-  #if JSON_SUPPORT
+  #if JSON_STATS && JSON_SUPPORT
     StaticJsonBuffer<2048> jsonBuffer;
     JsonObject& root = jsonBuffer.createObject();
     
-    root["tickNo"] = tickNo;
+    root["loop_type"] = LOOP_TYPE;
+    root["tick_no"] = tick_no;
     root["tick_start"] = tick_start;
-    root["loop_tick_time"] = loop_tick_time;
+    root["loop_tick_time"] = loop_tick_time * 0.001;
     root["last_tick_diff"] = last_tick_diff;
     root["fps"] = fps;
     
@@ -85,7 +86,7 @@ void Manager::loop() {
     }
   #endif // JSON_SUPPORT
   
-  tickNo++;
+  tick_no++;
 }
 
 void Manager::printInfo() {

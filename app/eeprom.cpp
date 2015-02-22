@@ -1,4 +1,5 @@
-#include "./eeprom.h"
+#include "eeprom.h"
+#include "general.h"
 
 using namespace iCave;
 
@@ -27,7 +28,9 @@ void EepromModule::setup() {
   
   readPersistentInfo();
   
-  persistenceInfo.bootNo++;
+  #if EEPROM_UPDATE_RUN_NO
+    persistenceInfo.bootNo++;
+  #endif // EEPROM_UPDATE_RUN_NO
   
   writePersistentInfo();
 }

@@ -13,14 +13,27 @@
   
   // App configuration related defines
   #define ENABLE_DHT (1)
+  #define DHT_SHOW_TEMPERATURE (1)
+  #define DHT_SHOW_HUMIDITY (1)
+  #define DHT_SHOW_HEAT_INDEX (1)
   
   #define ENABLE_DISPLAY (1)
   #define ENABLE_DISPLAY_TEST_LOOP (0)
   #define DISPLAY_STATS (1)
   
   #define ENABLE_EEPROM (1)
+  #define EEPROM_UPDATE_RUN_NO (1)
+  
   #define ENABLE_GPS (1)
-  #define ENABLE_RFID (1)
+  #define GPS_SHOW_ALTITUDE (1)
+  #define GPS_SHOW_ANGLE (0)
+  #define GPS_SHOW_DATE (1)
+  #define GPS_SHOW_FIX (1)
+  #define GPS_SHOW_POSITION (1)
+  #define GPS_SHOW_SPEED (1)
+  #define GPS_SHOW_TIME (1)
+  
+  #define ENABLE_RFID (0)
   
   #define ENABLE_SERIAL (1)
   #define SERIAL (1)
