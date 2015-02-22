@@ -96,6 +96,10 @@ void setup() {
     iCave::EepromModule* eepromModule = manager->createAndRegisterModule<iCave::EepromModule>();
   #endif // ENABLE_EEPROM
   
+  #if ENABLE_SD_CARD
+    iCave::SdCardModule* sdCardModule = manager->createAndRegisterModule<iCave::SdCardModule>();
+  #endif // ENABLE_SD_CARD
+  
   // Alphabetically 
   
   #if ENABLE_DHT
@@ -110,10 +114,6 @@ void setup() {
     iCave::GpsModule* gpsModule = manager->createAndRegisterModule<iCave::GpsModule>();
   #endif // ENABLE_GPS
 
-  #if ENABLE_SD_CARD
-    iCave::SdCardModule* sdCardModule = manager->createAndRegisterModule<iCave::SdCardModule>();
-  #endif // ENABLE_SD_CARD
-  
   #if ENABLE_TSL_2561
     iCave::Tsl2561Module* tsl2561Module = manager->createAndRegisterModule<iCave::Tsl2561Module>();
   #endif // ENABLE_TSL_2561
