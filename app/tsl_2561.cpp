@@ -18,10 +18,10 @@ float lux = 0;
 
 void Tsl2561Module::setup() {
   if (tsl.begin()) {
-    Serial.println("Found sensor");
+    // Serial.println("Found sensor");
     sensorFound = true;
   } else {
-    Serial.println("No TSL2561 sensor found");
+    // Serial.println("No TSL2561 sensor found");
     sensorFound = false;
     return;
   }

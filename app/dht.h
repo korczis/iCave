@@ -21,6 +21,11 @@
     class DhtModule : public Module {
     public:
       DhtModule(Manager* manager) : Module(manager) {} 
+      
+      /* virtual */ const char* name() const { 
+        return "dht";
+      }
+      
       /* virtual */ void setup();
   
       /* virtual */ void loop();

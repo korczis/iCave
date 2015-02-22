@@ -9,6 +9,10 @@
       Module(Manager* manager) : mManager(manager) {}
       virtual ~Module();
       
+      virtual const char* name() const {
+        return "iCave::Module";
+      };
+      
       virtual void setup() {};
       virtual void loop() {};
       

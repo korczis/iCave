@@ -9,7 +9,11 @@
     class Tsl2561Module : public Module {
     public:
       Tsl2561Module(Manager* manager) : Module(manager) {} 
-  
+      
+      /* virtual */ const char* name() const { 
+        return "tsl2561";
+      }
+        
       void setup();
       void loop();
     }; // class Tsl2561Module

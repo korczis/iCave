@@ -1,14 +1,13 @@
 #ifndef ICAVE_GENERAL_H
 #define ICAVE_GENERAL_H
-  #if defined(__SAM3X8E__)
-    #undef __FlashStringHelper::F(string_literal)
-    #define F(string_literal) string_literal
-  #endif
- 
   #define ICAVE_VERSION_MAJOR (0)
   #define ICAVE_VERSION_MINOR (0)
   #define ICAVE_VERSION_PATCH (1)
+  
+  #define PRINT_ENABLED_MODULES (0)
 
+  #define SENSOR_UPDATE_TICKS (0)
+  
   // App configuration related defines
   #define SERIAL (1)
   #define SERIAL_WAIT (0) // Wait for Arduino IDE "Serial Monitor to get connected"
@@ -41,19 +40,15 @@
   #define LOOP_TYPE (LT_FIXED_FPS)
   #define LOOP_INTERVAL (16)
   #define LOOP_FPS (20.0f)
-
+  
+  unsigned int getVersionMajor();  
+  unsigned int getVersionMinor();  
+  unsigned int getVersionPatch();
+  
   unsigned int getTotalRam();
-  
-  inline unsigned int getVersionMajor() {
-    return ICAVE_VERSION_MAJOR;
-  }
-  
-  inline unsigned int getVersionMinor() {
-    return ICAVE_VERSION_MINOR;
-  }
-  
-  inline unsigned int getVersionPatch() {
-    return ICAVE_VERSION_PATCH;
-  }
  
+  #if defined(__SAM3X8E__)
+    #undef __FlashStringHelper::F(string_literal)
+    #define F(string_literal) string_literal
+  #endif
 #endif // ICAVE_GENERAL_H

@@ -27,10 +27,6 @@ void useInterrupt(boolean val) {
 }
 
 void GpsModule::setup() {
-  if(Serial) {
-    Serial.println("Setting up GPS ...");
-  }
-  
   // 9600 NMEA is the default baud rate for Adafruit MTK GPS's- some use 4800
   GPS.begin(GPS_BAUDRATE);
 
@@ -57,8 +53,11 @@ void GpsModule::setup() {
 
   delay(1000);
   // Ask for firmware version
-  Serial.print("GPS: ");
-  Serial.println(PMTK_Q_RELEASE);
+  
+  if(Serial) {
+    Serial.print("GpsModule::setup() - ");
+    Serial.println(PMTK_Q_RELEASE);
+  }
 }
 
 extern unsigned short bootNo;

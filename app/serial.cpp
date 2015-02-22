@@ -1,12 +1,13 @@
 #include "serial.h"
 #include "SPI.h"
+#include "general.h"
 
 using namespace iCave;
 
 HardwareSerial Uart = HardwareSerial();
 
-void SerialModule::setup(/* int wait_for_serial */) {
-  static const bool wait_for_serial = false;
+void SerialModule::setup() {
+  static const bool wait_for_serial = SERIAL_WAIT;
   
   // Open serial communications and wait for port to open:
   Serial.begin(115200);

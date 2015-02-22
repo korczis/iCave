@@ -6,7 +6,12 @@
     class SerialModule : public Module {
     public:
       SerialModule(Manager* manager) : Module(manager) {} 
-      /* virtual */ void setup(/* int wait_for_serial = false */);
+      
+      /* virtual */ const char* name() const { 
+        return "serial";
+      }
+      
+      /* virtual */ void setup();
     }; // class SerialModule
   }; // namespace iCave
 #endif // ICAVE_SERIAL_H

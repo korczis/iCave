@@ -19,14 +19,15 @@ namespace iCave {
       return res;
     }
     
-    Module* registerModule(Module* module) {
+    template<typename T>
+    T* registerModule(T* module) {
       mModules.push_back(module);
       return module;
     }
     
     template<typename T>
-    inline Module* createAndRegisterModule() {
-      return registerModule(createModule<T>());
+    inline T* createAndRegisterModule() {
+      return registerModule<T>(createModule<T>());
     }
     
     static void printInfo();

@@ -20,6 +20,10 @@
       GpsModule(Manager* manager) : Module(manager) {} 
       /* virtual */ void setup(/* int wait_for_serial = false */);
       
+      /* virtual */ const char* name() const {
+        return "gps";
+      };
+      
       void updateDisplay();
   
       /* virtual */ void loop();

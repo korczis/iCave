@@ -10,6 +10,10 @@
     public:
       EepromModule(Manager* manager) : Module(manager) {} 
      
+      /* virtual */ const char* name() const { 
+        return "eeprom";
+      }
+      
       typedef struct PersistentInfo {
         unsigned char versionMajor;
         unsigned char versionMinor;

@@ -25,6 +25,10 @@
     public:
       SdCardModule(Manager* manager) : Module(manager) {} 
     
+      /* virtual */ const char* name() const { 
+        return "SdCardModule";
+      }
+      
       void setup();
     }; // class SdCardModule
   }; // namespace iCave

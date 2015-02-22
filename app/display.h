@@ -37,6 +37,10 @@
     public:
       DisplayModule(Manager* manager) : Module(manager) {} 
       
+      /* virtual */ const char* name() const { 
+        return "display";
+      }
+      
       unsigned long testFillScreen();
       
       unsigned long testText();
