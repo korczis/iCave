@@ -1,14 +1,33 @@
 # iCave
 
-Your Cave's Web Interface
+Web Interface for your Cave.
 
-## Structure
+*This is proof of concept, there is many things [to do](https://github.com/korczis/iCave/blob/master/TODO.md).*
 
-- [Software Structure](https://github.com/korczis/iCave/blob/master/app/README.md)
-
-## Images
+## Preview
 
 ![Display Image](https://raw.githubusercontent.com/korczis/iCave/master/imgs/display_low.jpg)
+
+
+## Features
+
+- Temperature measurement
+- Humidity measurement
+- GPS
+  - Location 
+  - Speed
+  - Altitude
+- Luminosity
+- TFT Display UI
+- Serial Output
+- Power
+  - USB
+  - Battery
+  - Laboratory voltage source
+ 
+## Repository structure
+
+- [Application Structure](https://github.com/korczis/iCave/blob/master/app/README.md)
 
 ## Prerequisites
 
