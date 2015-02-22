@@ -8,10 +8,10 @@
   #include "TFT_ILI9340.h"
   
   // Color definitions
-  #define	ILI9340_BLACK   0x0000
-  #define	ILI9340_BLUE    0x001F
-  #define	ILI9340_RED     0xF800
-  #define	ILI9340_GREEN   0x07E0
+  #define ILI9340_BLACK   0x0000
+  #define ILI9340_BLUE    0x001F
+  #define ILI9340_RED     0xF800
+  #define ILI9340_GREEN   0x07E0
   #define ILI9340_CYAN    0x07FF
   #define ILI9340_MAGENTA 0xF81F
   #define ILI9340_YELLOW  0xFFE0  
