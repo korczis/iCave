@@ -4,7 +4,7 @@
 - Logger
 - Profiler
 - SD Card support
-  - Logging
+  - [x] Logging
   - Profiling
   - Settings load
   - Settings store
