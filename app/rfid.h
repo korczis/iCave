@@ -2,6 +2,8 @@
 #define ICAVE_RFID_H
   #include "module.h"
   
+  #include <MFRC522.h>
+  
   namespace iCave {
     class RfidModule : public Module {
     public:

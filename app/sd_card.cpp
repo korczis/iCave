@@ -17,7 +17,7 @@ void SdCardModule::setup() {
   // Note that even if it's not used as the CS pin, the hardware SS pin 
   // (10 on most Arduino boards, 53 on the Mega) must be left as an output 
   // or the SD library functions will not work. 
-  pinMode(10, OUTPUT);     // change this to 53 on a mega
+  pinMode(chipSelect, OUTPUT);     // change this to 53 on a mega
 
 
   // we'll use the initialization code from the utility libraries
@@ -82,5 +82,11 @@ void SdCardModule::setup() {
   // list all files in the card with date and size
   root.ls(LS_R | LS_DATE | LS_SIZE);
 
+  if (!SD.begin(chipSelect)) {
+    Serial.println("initialization failed!");
+    return;
+  }
+  Serial.println("initialization done.");
+  
   sdInited = true;
 }

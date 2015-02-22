@@ -18,7 +18,7 @@
   // Sparkfun SD shield: pin 8
   // Teensy 2.0: pin 0
   // Teensy++ 2.0: pin 20
-  const int chipSelect = 10;   
+  const int chipSelect = 15;   
   
   namespace iCave {
     class SdCardModule : public Module {
@@ -26,7 +26,7 @@
       SdCardModule(Manager* manager) : Module(manager) {} 
     
       /* virtual */ const char* name() const { 
-        return "SdCardModule";
+        return "sd";
       }
       
       void setup();

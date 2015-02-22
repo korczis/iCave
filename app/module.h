@@ -1,4 +1,4 @@
-#ifndef ICAVE_MODULE_H
+#if !defined(ICAVE_MODULE_H)
 #define ICAVE_MODULE_H
 
   namespace iCave {

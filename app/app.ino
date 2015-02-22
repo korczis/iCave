@@ -1,5 +1,3 @@
-#include <MFRC522.h>
-
 // Core includes
 #include <SPI.h>
 #include <Wire.h>
@@ -11,7 +9,7 @@
 #include "./manager.h"
 #include "./core.h"
 
-iCave::Manager manager;
+iCave::Manager* manager = NULL;
 
 #if ENABLE_DHT
   #include <DHT.h>
@@ -37,6 +35,8 @@ iCave::Manager manager;
 #endif // ENABLE_GPS
 
 #if ENABLE_RFID
+  #include <MFRC522.h>
+
   #include "rfid.h"
 #endif // ENABLE_RFID
 
@@ -80,53 +80,55 @@ iCave::Manager manager;
  * @brief Main setup
  */
 void setup() {  
-  iCave::CoreModule* coreModule = manager.createAndRegisterModule<iCave::CoreModule>();
+  manager = new iCave::Manager();
+  
+  iCave::CoreModule* coreModule = manager->createAndRegisterModule<iCave::CoreModule>();
   
   // Serial needs to be initialized first as it is used for logging
   
   #if ENABLE_SERIAL
-    iCave::SerialModule* serialModule = manager.createAndRegisterModule<iCave::SerialModule>();
+    iCave::SerialModule* serialModule = manager->createAndRegisterModule<iCave::SerialModule>();
   #endif // ENABLE_SERIAL
   
   // EEPROM update needs to be done soon as well
   
   #if ENABLE_EEPROM
-    iCave::EepromModule* eepromModule = manager.createAndRegisterModule<iCave::EepromModule>();
+    iCave::EepromModule* eepromModule = manager->createAndRegisterModule<iCave::EepromModule>();
   #endif // ENABLE_EEPROM
+  
+  #if ENABLE_SD_CARD
+    iCave::SdCardModule* sdCardModule = manager->createAndRegisterModule<iCave::SdCardModule>();
+  #endif // ENABLE_SD_CARD 
   
   // Alphabetically 
   
   #if ENABLE_DHT
-    iCave::DhtModule* dhtModule = manager.createAndRegisterModule<iCave::DhtModule>();
+    iCave::DhtModule* dhtModule = manager->createAndRegisterModule<iCave::DhtModule>();
   #endif // ENABLE_DHT
   
   #if ENABLE_DISPLAY
-    iCave::DisplayModule* displayModule = manager.createAndRegisterModule<iCave::DisplayModule>();
+    iCave::DisplayModule* displayModule = manager->createAndRegisterModule<iCave::DisplayModule>();
   #endif // ENABLE_DISPLAY
   
   #if ENABLE_GPS
-    iCave::GpsModule* gpsModule = manager.createAndRegisterModule<iCave::GpsModule>();
+    iCave::GpsModule* gpsModule = manager->createAndRegisterModule<iCave::GpsModule>();
   #endif // ENABLE_GPS
-    
-  #if ENABLE_SD_CARD
-    iCave::SdCardModule* sdCardModule = manager.createAndRegisterModule<iCave::SdCardModule>();
-  #endif // ENABLE_SD_CARD  
-  
+
   #if ENABLE_TSL_2561
-    iCave::Tsl2561Module* tsl2561Module = manager.createAndRegisterModule<iCave::Tsl2561Module>();
+    iCave::Tsl2561Module* tsl2561Module = manager->createAndRegisterModule<iCave::Tsl2561Module>();
   #endif // ENABLE_TSL_2561
   
   #if ENABLE_WIFI
-    iCave::WifiModule* wifiModule = manager.createAndRegisterModule<iCave::WifiModule>();
+    iCave::WifiModule* wifiModule = manager->createAndRegisterModule<iCave::WifiModule>();
   #endif // WIFI_ENABLED
 
   // Snooze needs to be last ...
   #if ENABLE_SNOOZE
-    iCave::SnoozeModule* snoozeModule = manager.createAndRegisterModule<iCave::SnoozeModule>();
+    iCave::SnoozeModule* snoozeModule = manager->createAndRegisterModule<iCave::SnoozeModule>();
   #endif // ENABLE_SNOOZE
   
   // Setup modules registered in manager
-  manager.setup();    
+  manager->setup();    
 }
 
 /**
@@ -134,6 +136,6 @@ void setup() {
  */
 void loop(void) {
   // Loop modules registered in manager
-  manager.loop();
+  manager->loop();
 }
 

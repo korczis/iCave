@@ -3,6 +3,7 @@
 #include "general.h"
 #include "manager.h"
 #include "module.h"
+#include "sd_card.h"
 
 using namespace iCave;
 
@@ -79,11 +80,25 @@ void Manager::loop() {
     root["last_tick_diff"] = last_tick_diff;
     root["fps"] = fps;
     
-    root.prettyPrintTo(Serial);
-    
     if(Serial) {
+      root.prettyPrintTo(Serial);
       Serial.println();
     }
+    
+    #if ENABLE_SD_CARD
+      File file = SD.open("data.txt", FILE_WRITE);
+      
+      // if the file opened okay, write to it:
+      if (file) {
+        root.prettyPrintTo(file);
+        file.println();
+        file.close();
+      } else {
+        // if the file didn't open, print an error:
+        // Serial.println("error opening test.txt");
+      }
+    #endif // ENABLE_SD_CARD
+    
   #endif // JSON_SUPPORT
   
   tick_no++;

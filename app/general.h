@@ -9,7 +9,7 @@
     
   #define PRINT_ENABLED_MODULES (1)
 
-  #define SENSOR_UPDATE_TICKS (0)
+  #define SENSOR_UPDATE_TICKS (10)
   
   // App configuration related defines
   #define ENABLE_DHT (1)
@@ -37,9 +37,9 @@
   
   #define ENABLE_SERIAL (1)
   #define SERIAL (1)
-  #define SERIAL_WAIT (0) // Wait for Arduino IDE "Serial Monitor to get connected"
+  #define SERIAL_WAIT (1) // Wait for Arduino IDE "Serial Monitor to get connected"
   
-  #define ENABLE_SD_CARD (0)
+  #define ENABLE_SD_CARD (1)
   #define ENABLE_SNOOZE (0) // Problematic
   #define ENABLE_TSL_2561 (1)
   #define ENABLE_WIFI (0) // Problematic
