@@ -30,7 +30,7 @@ Your Cave's Web Interface
 
 - [Teensy 3.1](https://www.pjrc.com/teensy/teensy31.html) (~ $20)
   
-  Teensy 3.1 is a small, breadboard-friendly development which brings a low-cost 32 bit ARM Cortex-M4 platform to hobbyists, students and engineers, using an adapted version of the Arduino IDE.
+  *Teensy 3.1 is a small, breadboard-friendly development which brings a low-cost 32 bit ARM Cortex-M4 platform to hobbyists, students and engineers, using an adapted version of the Arduino IDE.*
 
   - Processor: MK20DX256VLH7 
   - Core: Cortex-M4
@@ -45,7 +45,7 @@ Your Cave's Web Interface
 
 - [ST7735R](https://www.adafruit.com/product/358) (~ $20)
 
-  Display that uses 4-wire SPI to communicate and has its own pixel-addressable frame buffer, it can be used with every kind of microcontroller.
+  *Display that uses 4-wire SPI to communicate and has its own pixel-addressable frame buffer, it can be used with every kind of microcontroller.*
   
   - 1.8" diagonal LCD TFT display
   - 128x160 resolution, 18-bit (262,144) color
@@ -61,7 +61,7 @@ Your Cave's Web Interface
 
 - [DHT22](https://www.adafruit.com/product/393) (~ $15)
 
-  Basic, low-cost digital temperature and humidity sensor. It uses a capacitive humidity sensor and a thermistor to measure the surrounding air, and spits out a digital signal on the data pin.
+  *Basic, low-cost digital temperature and humidity sensor. It uses a capacitive humidity sensor and a thermistor to measure the surrounding air, and spits out a digital signal on the data pin.*
   
   - Low cost
   - 3 to 5V power and I/O
@@ -71,7 +71,7 @@ Your Cave's Web Interface
   
 - [GPS](https://www.adafruit.com/products/746) (~ $40)
 
-  High-quality GPS module that can track up to 22 satellites on 66 channels and has an excellent high-sensitivity receiver.
+  *High-quality GPS module that can track up to 22 satellites on 66 channels and has an excellent high-sensitivity receiver.*
   
   - 165 dBm sensitivity, 10 Hz updates, 66 channels
   - 5V friendly design
@@ -86,7 +86,7 @@ Your Cave's Web Interface
 
 - [TSL2561](https://www.adafruit.com/products/439) (~ $6)
 
-  The TSL2561 luminosity sensor is an advanced digital light sensor
+  *The TSL2561 luminosity sensor is an advanced digital light sensor.*
   
   - Approximates Human eye Response
   - Precisely Measures Illuminance in Diverse Lighting Conditions
@@ -98,7 +98,7 @@ Your Cave's Web Interface
   
 - [Wifi CC3000](https://www.adafruit.com/products/1469) (~ $35)
 
-  Microcontroller-friendly WiFi module
+  *Microcontroller-friendly WiFi module.*
   
   - 802.11b/g
   - Open/WEP/WPA/WPA2 security,
@@ -108,14 +108,14 @@ Your Cave's Web Interface
 
 - [nRF24L01](http://playground.arduino.cc/InterfacingWithHardware/Nrf24L01) (~ $1-5)
 
-  Radio/Wireless Transceiver
+  *Radio/Wireless Transceiver.*
 
   - 2.4GHz RF
   - [How To](http://arduino-info.wikispaces.com/Nrf24L01-2.4GHz-HowTo)
 
 - [RFID-RC522](http://devsketches.blogspot.cz/2014/05/rfid-sensor-funduino-rfid-rc522.html) (~ $6)
 
-  RFID sensor
+  *RFID sensor.*
   
 ## Getting started
 
